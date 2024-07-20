@@ -1,0 +1,44 @@
+<!-- views/admin-dashboard.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edelweiss Wedding Planner - Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Admin Dashboard</h2>
+
+        <!-- Form for creating events -->
+        <form action="/create-event" method="post" enctype="multipart/form-data">
+            <label for="event-name">Event Name:</label>
+            <input type="text" id="event-name" name="eventName" required>
+            
+            <label for="event-date">Event Date:</label>
+            <input type="date" id="event-date" name="eventDate" value="<%= currentDate %>" required>
+            
+            <label for="json-filename">JSON Filename:</label>
+            <input type="text" id="json-filename" name="jsonFilename" required>
+            
+            <label for="event-file">Upload Guest List (Excel):</label>
+            <input type="file" id="event-file" name="eventFile" accept=".xlsx" required>
+
+            <button type="submit">Create Event</button>
+        </form>
+
+        <h3>Existing Events</h3>
+        <ul id="event-list">
+            <% events.forEach(event => { %>
+                <li>
+                    <a href="/edit-event/<%= event.fileName %>">
+                        <%= event.fileName %> - <%= event.eventName %> - <%= event.eventDate %>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>
