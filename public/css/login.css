@@ -1,0 +1,31 @@
+@media (max-width: 992px) {
+    .edw_logo_hostess_container IMG {
+        width: 600px;
+    }
+}
+.hostess-edw-login-wrapper{
+    background-color: #000;
+    overflow: hidden;
+}
+
+.hostess-edw-login-container {
+    min-height: 100vh;
+}
+
+input {
+    background-color: #000;
+    border: 2px solid #d6b770;
+    color: #d6b770;
+}
+
+#username {
+    margin-bottom: 1rem;
+}
+
+#password {
+    margin-bottom: 2rem;
+}
+
+#login-btn{
+    margin-bottom: 3rem;
+}
