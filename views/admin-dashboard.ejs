@@ -67,6 +67,7 @@
                                     <th class="">Nume</th>
                                     <th class="">Data</th>
                                     <th class="">Status</th>
+                                    <th class="">Locatie</th>
                                     <th class="">Pret</th>
                                     <th class="">Nr</th>
                                     <th class=""></th>
@@ -89,18 +90,18 @@
                                             <span class="status-event">In asteptare</span>
                                         </td>
                                         <td>
+                                            Pleiada
+                                        </td>
+                                        <td>
                                             200 LEI
                                         </td>
                                         <td>2</td>
                                         <td>
-                                            <img class="event-actions"
-                                                src="https://assets.edelweiss-evenimente.ro/hostess/more_vert.svg"
-                                                width="20" height="20" alt="" />
-                                            <div>
-                                                <div style="display: none;">
-                                                    <a href="/edit-event/<%= event.fileName %>">Edit</a>
-                                                </div>
-                                            </div>
+                                            <a href="/edit-event/<%= event.fileName %>">
+                                                <img class="event-actions"
+                                                    src="https://assets.edelweiss-evenimente.ro/hostess/more_vert.svg"
+                                                    width="20" height="20" alt="" />
+                                            </a>
                                         </td>
                                     </tr>
                                     <% }) %>
