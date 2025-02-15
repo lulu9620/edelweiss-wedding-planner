@@ -3,7 +3,7 @@
   "eventDate": "2024-07-17",
   "guests": [
     {
-      "name": "t t123",
+      "name": "Test",
       "tableNumber": "2",
       "arrived": false
     },
