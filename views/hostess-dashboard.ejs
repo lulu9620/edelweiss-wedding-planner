@@ -1,3 +1,4 @@
+planner/views/hostess-dashboard.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,18 @@
 <body>
     <div class="dashboard-container">
         <h2>Hostess Dashboard</h2>
-        <h3>Event: <%= eventName %></h3>
+        <div class="event-info">
+            <h3>Event: <%= eventName %></h3>
+            <div class="guest-stats">
+                <span id="guest-count">
+                    <%
+                    const arrivedCount = (guests || []).filter(guest => guest.arrived).length;
+                    const totalCount = (guests || []).length;
+                    %>
+                    Attendance: <strong><span id="arrived-count"><%= arrivedCount %></span>/<span id="total-count"><%= totalCount %></span></strong>
+                </span>
+            </div>
+        </div>
         <div class="filter-container">
             <input type="text" id="filter-name" placeholder="Filter by name">
             <input type="number" id="filter-table" placeholder="Filter by table number">
