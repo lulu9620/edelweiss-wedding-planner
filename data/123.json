@@ -10,7 +10,7 @@
     {
       "name": "ionescu",
       "tableNumber": "3",
-      "arrived": false
+      "arrived": true
     },
     {
       "name": "popesci",

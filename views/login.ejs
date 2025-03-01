@@ -17,6 +17,12 @@
 </head>
 
 <body>
+    <% if (typeof error !== 'undefined' && error) { %>
+        <div class="alert alert-danger">
+            <%= error %>
+        </div>
+    <% } %>
+    
     <div class="hostess-edw-login-wrapper">
         <div class="container ">
             <div class="row hostess-edw-login-container align-items-xl-center">
