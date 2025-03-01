@@ -98,23 +98,60 @@ app.get('/admin-dashboard', (req, res) => {
             return;
         }
 
-        const events = files.map(file => {
-            const fileName = file.replace('.json', '');
-            const eventFilePath = path.join(dataFolder, file);
-            const eventData = JSON.parse(fs.readFileSync(eventFilePath, 'utf8'));
-            return {
-                fileName,
-                eventName: eventData.eventName,
-                eventDate: eventData.eventDate,
-                eventLocation: eventData.eventLocation,
-                eventPrice: eventData.eventPrice,
-                eventStatus: eventData.eventStatus,
-                guestCount: eventData.guests.length
-            };
-        });
+        const events = files
+            .filter(file => file.endsWith('.json'))  // Only process JSON files
+            .map(file => {
+                const fileName = file.replace('.json', '');
+                const eventFilePath = path.join(dataFolder, file);
+                try {
+                    const eventData = JSON.parse(fs.readFileSync(eventFilePath, 'utf8'));
+                    return {
+                        fileName,
+                        eventName: eventData.eventName,
+                        eventDate: eventData.eventDate,
+                        eventLocation: eventData.eventLocation,
+                        eventPrice: eventData.eventPrice,
+                        eventStatus: eventData.eventStatus,
+                        guestCount: eventData.guests ? eventData.guests.length : 0
+                    };
+                } catch (error) {
+                    console.error(`Error reading file ${file}:`, error);
+                    return null;
+                }
+            })
+            .filter(Boolean);  // Remove any null values from errors
 
-        res.render('admin-dashboard', { events, currentDate });
+        // Pass the deleted parameter to the template
+        res.render('admin-dashboard', { 
+            events, 
+            currentDate, 
+            deleted: req.query.deleted === 'true'  // Pass the deleted flag
+        });
     });
+});
+
+// Route to handle event deletion
+app.post('/delete-event/:filename', (req, res) => {
+    const filename = req.params.filename;
+    const eventFilePath = path.join(dataFolder, `${filename}.json`);
+    
+    try {
+        // Check if file exists
+        if (fs.existsSync(eventFilePath)) {
+            // Delete the file
+            fs.unlinkSync(eventFilePath);
+            console.log(`Successfully deleted event: ${filename}`);
+            
+            // Redirect back to dashboard with success message
+            res.redirect('/admin-dashboard?deleted=true');
+        } else {
+            console.error(`Event file not found: ${filename}`);
+            res.status(404).send('Event not found');
+        }
+    } catch (error) {
+        console.error(`Error deleting event ${filename}:`, error);
+        res.status(500).send(`Error deleting event: ${error.message}`);
+    }
 });
 
 // Route to render edit event page

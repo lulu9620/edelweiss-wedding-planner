@@ -69,7 +69,33 @@ body {
     color: #4d7c0f;
 }
 
-
 .event-actions {
     cursor: pointer;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 1rem;
+}
+.dataTables_wrapper .dataTables_length {
+    margin-bottom: 1rem;
+}
+.table-responsive {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    background: white;
+}
+table.dataTable thead th {
+    font-weight: 600;
+    padding: 10px;
+}
+.status-event {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #e9ecef;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+table.dataTable tbody td {
+    vertical-align: middle;
 }

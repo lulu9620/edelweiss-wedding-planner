@@ -1,5 +1,5 @@
 {
-  "eventName": "eveniment",
+  "eventName": "eveniment nou",
   "eventDate": "2024-07-18",
   "guests": [
     {
@@ -17,5 +17,8 @@
       "tableNumber": "10",
       "arrived": false
     }
-  ]
+  ],
+  "eventLocation": "test",
+  "eventPrice": "333",
+  "eventStatus": "acceptat"
 }
