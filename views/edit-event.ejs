@@ -11,14 +11,39 @@
 <body>
     <div class="dashboard-container">
         <h2>Edit Event</h2>
-<form id="event-form" action="/edit-event/<%= filename %>" method="post" enctype="multipart/form-data">
-            <label for="event-name">Event Name:</label>
-            <input type="text" id="event-name" name="event-name" value="<%= eventData.eventName  %>" required>
-            <label for="event-date">Event Date:</label>
-            <input type="date" id="event-date" name="event-date" value="<%= eventData.eventDate  %>" required>
+        <form id="event-form" action="/edit-event/<%= filename %>" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="event-name">Event Name:</label>
+                <input type="text" id="event-name" name="event-name" value="<%= eventData.eventName %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="event-date">Event Date:</label>
+                <input type="date" id="event-date" name="event-date" value="<%= eventData.eventDate %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="event-location">Location:</label>
+                <input type="text" id="event-location" name="event-location" value="<%= eventData.eventLocation || '' %>">
+            </div>
+
+            <div class="form-group">
+                <label for="event-price">Price:</label>
+                <input type="text" id="event-price" name="event-price" value="<%= eventData.eventPrice || '' %>">
+            </div>
+
+            <div class="form-group">
+                <label for="event-status">Status:</label>
+                <select id="event-status" name="event-status">
+                    <option value="acceptat" <%= eventData.eventStatus === 'acceptat' ? 'selected' : '' %>>Acceptat</option>
+                    <option value="terminat" <%= eventData.eventStatus === 'terminat' ? 'selected' : '' %>>Terminat</option>
+                </select>
+            </div>
+
             <input type="hidden" id="guest-list-data" name="guest-list-data">
             <button type="submit">Update Event</button>
         </form>
+
         <h3>Guest List</h3>
         <div class="filter-container">
             <input type="text" id="filter-name" placeholder="Filter by name">

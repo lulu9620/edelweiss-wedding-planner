@@ -105,7 +105,11 @@ app.get('/admin-dashboard', (req, res) => {
             return {
                 fileName,
                 eventName: eventData.eventName,
-                eventDate: eventData.eventDate
+                eventDate: eventData.eventDate,
+                eventLocation: eventData.eventLocation,
+                eventPrice: eventData.eventPrice,
+                eventStatus: eventData.eventStatus,
+                guestCount: eventData.guests.length
             };
         });
 
@@ -129,7 +133,17 @@ app.get('/edit-event/:filename', (req, res) => {
 
 // Route to handle POST request to create event
 app.post('/create-event', upload.single('eventFile'), (req, res) => {
-    const { eventName, eventDate, jsonFilename } = req.body;
+    const { 
+        eventName, 
+        eventDate, 
+        jsonFilename,
+        eventLocation,
+        eventPrice,
+        eventStatus
+    } = req.body;
+
+    console.log('Create event request body:', req.body);
+    console.log('File received:', req.file ? req.file.originalname : 'No file');
 
     if (!eventName || !eventDate || !jsonFilename || !req.file) {
         return res.status(400).send('Event Name, Event Date, JSON Filename, and Event File are required.');
@@ -152,9 +166,14 @@ app.post('/create-event', upload.single('eventFile'), (req, res) => {
         const eventData = {
             eventName: eventName,
             eventDate: eventDate,
+            eventLocation: eventLocation || '',
+            eventPrice: eventPrice || '',
+            eventStatus: eventStatus || 'in asteptare',
             guests: guests
         };
 
+        console.log('Creating event:', eventData);
+        
         const targetJsonFilePath = path.join(dataFolder, `${jsonFilename}.json`);
         fs.writeFileSync(targetJsonFilePath, JSON.stringify(eventData, null, 2));
 
@@ -168,19 +187,42 @@ app.post('/create-event', upload.single('eventFile'), (req, res) => {
 // POST route to handle updating an event
 app.post('/edit-event/:filename', upload.single('event-file'), (req, res) => {
     const filename = req.params.filename;
-    const { 'event-name': eventName, 'event-date': eventDate, 'guest-list-data': guestListData } = req.body;
+    const { 
+        'event-name': eventName, 
+        'event-date': eventDate, 
+        'event-location': eventLocation,
+        'event-price': eventPrice,
+        'event-status': eventStatus,
+        'guest-list-data': guestListData 
+    } = req.body;
 
     let eventData;
     try {
         eventData = JSON.parse(fs.readFileSync(`data/${filename}.json`));
     } catch (error) {
         console.error(`Error reading or parsing file ${filename}.json:`, error);
-        eventData = { name: '', date: '', guests: [] };
+        eventData = { 
+            eventName: '', 
+            eventDate: '', 
+            eventLocation: '',
+            eventPrice: '',
+            eventStatus: '',
+            guests: [] 
+        };
     }
 
-    eventData.name = eventName;
-    eventData.date = eventDate;
+    // Update the event data
+    eventData.eventName = eventName;
+    eventData.eventDate = eventDate;
+    eventData.eventLocation = eventLocation;
+    eventData.eventPrice = eventPrice;
+    eventData.eventStatus = eventStatus;
     eventData.guests = JSON.parse(guestListData);
+
+        
+    if (guestListData) {
+        eventData.guests = JSON.parse(guestListData);
+    }
 
     fs.writeFileSync(`data/${filename}.json`, JSON.stringify(eventData, null, 2));
 

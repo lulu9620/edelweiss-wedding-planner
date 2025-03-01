@@ -45,13 +45,29 @@
                         <form action="/create-event" method="post" enctype="multipart/form-data">
                             <label class="col-12" for="event-name">Nume eveniment</label>
                             <input class="col-12" type="text" id="event-name" name="eventName" required>
+                            
                             <label class="col-12" for="event-date">Data eveniment</label>
-                            <input class="col-12" type="date" id="event-date" name="eventDate"
-                                value="<%= currentDate %>" required>
+                            <input class="col-12" type="date" id="event-date" name="eventDate" value="<%= currentDate %>" required>
+                            
+                            <label class="col-12" for="event-location">Locatie</label>
+                            <input class="col-12" type="text" id="event-location" name="eventLocation">
+                            
+                            <label class="col-12" for="event-price">Pret</label>
+                            <input class="col-12" type="text" id="event-price" name="eventPrice">
+                            
+                            <label class="col-12" for="event-status">Status</label>
+                            <select class="col-12" id="event-status" name="eventStatus">
+                                <option value="acceptat">Acceptat</option>
+                                <option value="terminat">Terminat</option>
+                                <option value="in asteptare" selected>In asteptare</option>
+                            </select>
+                            
                             <label class="col-12" for="json-filename">Cod eveniment</label>
-                            <input class="col-12" type="text" id="json-filename" name="jsonFilename" readonly>
+                            <input class="col-12" type="text" id="json-filename" name="jsonFilename" required>
+                            
                             <label class="col-12" for="event-file">Incarca lista invitati (Excel)</label>
-                            <input class="col-12" type="file" id="event-file" name="eventFile" accept=".xlsx" required>
+                            <input class="col-12" type="file" id="event-file" name="eventFile" accept=".xlsx,.xls" required>
+                            
                             <button class="primary-button col-12" type="submit">Adauga eveniment</button>
                         </form>
                     </div>
@@ -70,16 +86,14 @@
                                     <th class="">Locatie</th>
                                     <th class="">Pret</th>
                                     <th class="">Nr</th>
+                                    <th class="">Cod Eveniment</th>
                                     <th class=""></th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                <% events.forEach(event=> { %>
+                                <% events.forEach(event => { %>
                                     <tr>
-                                        <!-- <td>
-                                            <%= event.fileName %>
-                                        </td> -->
                                         <td>
                                             <%= event.eventName %>
                                         </td>
@@ -87,15 +101,20 @@
                                             <%= event.eventDate %>
                                         </td>
                                         <td>
-                                            <span class="status-event">In asteptare</span>
+                                            <span class="status-event"><%= event.eventStatus || 'N/A' %></span>
                                         </td>
                                         <td>
-                                            Pleiada
+                                            <%= event.eventLocation || 'N/A' %>
                                         </td>
                                         <td>
-                                            200 LEI
+                                            <%= event.eventPrice || 'N/A' %> 
                                         </td>
-                                        <td>2</td>
+                                        <td>
+                                            <%= event.guestCount %>
+                                        </td>
+                                        <td>
+                                            <%= event.fileName %>
+                                        </td>
                                         <td>
                                             <a href="/edit-event/<%= event.fileName %>">
                                                 <img class="event-actions"
@@ -104,7 +123,7 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    <% }) %>
+                                <% }) %>
                             </tbody>
                         </table>
 
