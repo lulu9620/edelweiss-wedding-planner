@@ -61,7 +61,7 @@
                 <% (eventData.guests || []).forEach((guest, index) => { %>
                     <tr>
                         <td><input type="text" name="guest-name" value="<%= guest.name %>"></td>
-                        <td><input type="number" name="guest-table" value="<%= guest.tableNumber %>"></td>
+                        <td><input type="text" name="guest-table" value="<%= guest.tableNumber %>"></td>
                         <td>
                             <button type="button" class="delete-row">Delete</button>
                         </td>

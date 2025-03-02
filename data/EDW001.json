@@ -1,0 +1,39 @@
+{
+  "eventName": "Nunta maria + Ghita",
+  "eventDate": "2025-03-02",
+  "eventLocation": "vaslui",
+  "eventPrice": "4000",
+  "eventStatus": "acceptat",
+  "guests": [
+    {
+      "name": "John Smith",
+      "tableNumber": "1",
+      "arrived": false
+    },
+    {
+      "name": "Jane Doe",
+      "tableNumber": "2",
+      "arrived": false
+    },
+    {
+      "name": "Bob Johnson",
+      "tableNumber": "1",
+      "arrived": false
+    },
+    {
+      "name": "Alice Williams",
+      "tableNumber": "3",
+      "arrived": false
+    },
+    {
+      "name": "Ion Ionescu",
+      "tableNumber": "10",
+      "arrived": false
+    },
+    {
+      "name": "",
+      "tableNumber": "",
+      "arrived": false
+    }
+  ]
+}
