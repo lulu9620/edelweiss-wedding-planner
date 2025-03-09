@@ -1,0 +1,44 @@
+{
+  "eventName": "evăniment 2",
+  "eventDate": "2025-03-02",
+  "eventLocation": "iasi",
+  "eventPrice": "888888888",
+  "eventStatus": "acceptat",
+  "guests": [
+    {
+      "name": "cristi cristulescu",
+      "tableNumber": "masa 8",
+      "arrived": true
+    },
+    {
+      "name": "John Smith",
+      "tableNumber": "massa 1",
+      "arrived": true
+    },
+    {
+      "name": "Jane Doe",
+      "tableNumber": "massa 2",
+      "arrived": true
+    },
+    {
+      "name": "Bob Johnson",
+      "tableNumber": "prezidiu",
+      "arrived": false
+    },
+    {
+      "name": "Alice Williams",
+      "tableNumber": "prezidiu",
+      "arrived": false
+    },
+    {
+      "name": "gica giculescu",
+      "tableNumber": "321",
+      "arrived": false
+    },
+    {
+      "name": "vlad vladulescu",
+      "tableNumber": "masda 1231",
+      "arrived": false
+    }
+  ]
+}

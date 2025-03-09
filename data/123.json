@@ -1,5 +1,5 @@
 {
-  "eventName": "123",
+  "eventName": "123123",
   "eventDate": "2024-07-17",
   "guests": [
     {
@@ -10,7 +10,7 @@
     {
       "name": "ionescu",
       "tableNumber": "3",
-      "arrived": false
+      "arrived": true
     },
     {
       "name": "popesci",
@@ -18,11 +18,12 @@
       "arrived": false
     },
     {
-      "name": "trwe",
+      "name": "true",
       "tableNumber": "2",
       "arrived": false
     }
   ],
-  "name": "123",
-  "date": "2024-07-17"
+  "eventLocation": "iasi",
+  "eventPrice": "565234",
+  "eventStatus": "terminat"
 }
