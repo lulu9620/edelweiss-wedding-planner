@@ -2,43 +2,211 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edelweiss Wedding Planner - Dashboard</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <title>Hostess Dashboard | Edelweiss Evenimente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500..700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 </head>
+
 <body>
-    <div class="dashboard-container">
-        <h2>Admin Dashboard</h2>
-
-        <!-- Form for creating events -->
-        <form action="/create-event" method="post" enctype="multipart/form-data">
-            <label for="event-name">Event Name:</label>
-            <input type="text" id="event-name" name="eventName" required>
-            
-            <label for="event-date">Event Date:</label>
-            <input type="date" id="event-date" name="eventDate" value="<%= currentDate %>" required>
-            
-            <label for="json-filename">JSON Filename:</label>
-            <input type="text" id="json-filename" name="jsonFilename" required>
-            
-            <label for="event-file">Upload Guest List (Excel):</label>
-            <input type="file" id="event-file" name="eventFile" accept=".xlsx" required>
-
-            <button type="submit">Create Event</button>
-        </form>
-
-        <h3>Existing Events</h3>
-        <ul id="event-list">
-            <% events.forEach(event => { %>
-                <li>
-                    <a href="/edit-event/<%= event.fileName %>">
-                        <%= event.fileName %> - <%= event.eventName %> - <%= event.eventDate %>
-                    </a>
-                </li>
-            <% }) %>
-        </ul>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="navigation d-flex column-gap-3">
+                    <div class="nav-item text-center">
+                        <a class="nav-link" href="">
+                            <span>Lista evenimente</span>
+                        </a>
+                    </div>
+                    <div class="nav-item text-center">
+                        <a class="nav-link" href="/logout">
+                            <span>Logout</span>
+                            <img src="https://assets.edelweiss-evenimente.ro/hostess/logout.svg" width="16" height="16" alt="" style="margin-top: -2px;" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+        <!-- Add the alert notification here, between the navigation and the dashboard content -->
+        <% if (deleted) { %>
+            <div class="container-fluid mt-3">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Evenimentul a fost șters cu succes.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+            <% } %>
+
+    <div class="dashboard-container container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="dashboard-item">
+                    <h2 class="fw-bold">Eveniment nou</h2>
+                    <div>
+                        <form action="/create-event" method="post" enctype="multipart/form-data">
+                            <label class="col-12" for="event-name">Nume eveniment</label>
+                            <input class="col-12" type="text" id="event-name" name="eventName" required>
+                            
+                            <label class="col-12" for="event-date">Data eveniment</label>
+                            <input class="col-12" type="date" id="event-date" name="eventDate" value="<%= currentDate %>" required>
+                            
+                            <label class="col-12" for="event-location">Locatie</label>
+                            <input class="col-12" type="text" id="event-location" name="eventLocation">
+                            
+                            <label class="col-12" for="event-price">Pret</label>
+                            <input class="col-12" type="text" id="event-price" name="eventPrice">
+                            
+                            <label class="col-12" for="event-status">Status</label>
+                            <select class="col-12" id="event-status" name="eventStatus">
+                                <option value="acceptat">Acceptat</option>
+                                <option value="terminat">Terminat</option>
+                                <option value="in asteptare" selected>In asteptare</option>
+                            </select>
+                            
+                            <label class="col-12" for="json-filename">Cod eveniment</label>
+                            <input class="col-12" type="text" id="json-filename" name="jsonFilename" required>
+                            
+                            <label class="col-12" for="event-file">Incarca lista invitati (Excel)</label>
+                            <input class="col-12" type="file" id="event-file" name="eventFile" accept=".xlsx,.xls" required>
+                            
+                            <button class="primary-button col-12" type="submit">Adauga eveniment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="dashboard-item">
+                    <h2 class="fw-bold">Lista evenimente</h2>
+                    <div class="table-responsive">
+                        <table id="events-table" class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nume</th>
+                                    <th>Data</th>
+                                    <th>Status</th>
+                                    <th>Locatie</th>
+                                    <th>Pret</th>
+                                    <th>Nr</th>
+                                    <th>Cod Eveniment</th>
+                                    <th>Actiuni</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% events.forEach(event => { %>
+                                    <tr>
+                                        <td><%= event.eventName %></td>
+                                        <td><%= event.eventDate %></td>
+                                        <td><span class="status-event"><%= event.eventStatus || 'N/A' %></span></td>
+                                        <td><%= event.eventLocation || 'N/A' %></td>
+                                        <td><%= event.eventPrice || 'N/A' %></td>
+                                        <td><%= event.guestCount %></td>
+                                        <td><%= event.fileName %></td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton<%= event.fileName %>" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <img class="event-actions" src="https://assets.edelweiss-evenimente.ro/hostess/more_vert.svg" width="20" height="20" alt="Actions" />
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<%= event.fileName %>">
+                                                    <li><a class="dropdown-item" href="/edit-event/<%= event.fileName %>">
+                                                        <i class="bi bi-pencil-square me-2"></i>Editează
+                                                    </a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><button class="dropdown-item text-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteEventModal" data-filename="<%= event.fileName %>" data-eventname="<%= event.eventName %>">
+                                                        <i class="bi bi-trash me-2"></i>Șterge
+                                                    </button></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteEventModal" tabindex="-1" aria-labelledby="deleteEventModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteEventModalLabel">Confirmare ștergere</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Sigur doriți să ștergeți evenimentul <span id="eventNameToDelete" class="fw-bold"></span>?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anulează</button>
+              <form id="deleteEventForm" method="POST" action="">
+                <button type="submit" class="btn btn-danger">Șterge</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- JavaScript Bundle -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('#events-table').DataTable({
+                responsive: true,
+                language: {
+                    search: "Caută:",
+                    lengthMenu: "Afișează _MENU_ înregistrări per pagină",
+                    info: "Afișează _START_ până la _END_ din _TOTAL_ înregistrări",
+                    infoEmpty: "Afișează 0 până la 0 din 0 înregistrări",
+                    infoFiltered: "(filtrat din _MAX_ înregistrări totale)",
+                    paginate: {
+                        first: "Prima",
+                        last: "Ultima",
+                        next: "Următoarea",
+                        previous: "Precedenta"
+                    },
+                    emptyTable: "Nu există date disponibile în tabel",
+                    zeroRecords: "Nu au fost găsite înregistrări care să se potrivească"
+                },
+                columnDefs: [
+                    { responsivePriority: 1, targets: 0 },  // Nume
+                    { responsivePriority: 2, targets: 1 },  // Data
+                    { responsivePriority: 3, targets: -1 }  // Actiuni
+                ],
+                order: [[1, 'desc']]  // Sort by date descending by default
+            });
+
+             // Handle event delete confirmation
+         $('#deleteEventModal').on('show.bs.modal', function (event) {
+            const button = $(event.relatedTarget);
+            const fileName = button.data('filename');
+            const eventName = button.data('eventname');
+            
+            const modal = $(this);
+            modal.find('#eventNameToDelete').text(eventName);
+            modal.find('#deleteEventForm').attr('action', '/delete-event/' + fileName);
+        });
+    });
+</script>
 </body>
 </html>

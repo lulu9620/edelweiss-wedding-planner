@@ -1,0 +1,29 @@
+{
+  "eventName": "test123123",
+  "eventDate": "2025-03-01",
+  "eventLocation": "asrfdasd",
+  "eventPrice": "123",
+  "eventStatus": "terminat",
+  "guests": [
+    {
+      "name": "John Smith",
+      "tableNumber": 1,
+      "arrived": false
+    },
+    {
+      "name": "Jane Doe",
+      "tableNumber": 2,
+      "arrived": true
+    },
+    {
+      "name": "Bob Johnson",
+      "tableNumber": 1,
+      "arrived": false
+    },
+    {
+      "name": "Alice Williams",
+      "tableNumber": 3,
+      "arrived": true
+    }
+  ]
+}
