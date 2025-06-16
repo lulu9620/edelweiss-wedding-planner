@@ -8,7 +8,7 @@ body {
     border-image-slice: 1;
     border-image-source: linear-gradient(to left, #dec37b, #faf1a3);
     border-width: 3px;
-    height: 100vh;
+    min-height: 100vh;
     padding-right: 0.75rem;
     flex-basis: 10%;
     max-width: 10%;
@@ -87,6 +87,11 @@ body {
     color: #969696;
     font-size: 1rem;
     margin-bottom: 1.5rem;
+}
+
+h3 {
+    color: #969696;
+    font-size: 1rem;
 }
 
 .dashboard-item label {
@@ -185,4 +190,12 @@ table.dataTable thead th {
 
 table.dataTable tbody td {
     vertical-align: middle;
+}
+
+.add-row-btn {
+    min-height: 2rem !important;
+}
+
+.font-size-12 {
+    font-size: 1.2rem;
 }

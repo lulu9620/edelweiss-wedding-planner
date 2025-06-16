@@ -109,7 +109,7 @@ app.post('/login', (req, res) => {
         
         res.redirect('/admin-dashboard');
     } else {
-        res.render('login', { error: 'Invalid username or password' });
+        res.render('login', { error: 'Datele introduse nu sunt corecte' });
     }
 });
 

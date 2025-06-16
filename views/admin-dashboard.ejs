@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Planner Meniu | Edelweiss Evenimente</title>
+    <description></description>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500..700&display=swap" rel="stylesheet">
@@ -18,6 +19,7 @@
     <link rel="stylesheet" href="/css/admin-dashboard.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 </head>
+
 <body>
     <div class="container-fluid d-flex">
         <div class="navigation-container">
@@ -42,6 +44,9 @@
             </nav>
         </div>
         <div class="dashboard-container">
+            <div class="hamburger-menu-container">
+                <i class="bi bi-list hamburger-menu"></i>
+            </div>
             <div class="d-flex column-gap-3" style="display: none !important;">
                 <div class="dashboard-card dashboard-card-1 d-flex">
                     <div>Test1</div>
@@ -70,7 +75,7 @@
                                     <th>Pret</th>
                                     <!-- <th>Nr</th> -->
                                     <th>Cod Eveniment</th>
-                                    <th>Setari</th>
+                                    <th>Actiuni</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,7 +87,8 @@
                                         <td>
                                             <%= event.eventDate %>
                                         </td>
-                                        <td><span class="status-event<%= event.eventStatus == 'finalizat' ? ' status-event-done' : '' %>">
+                                        <td><span
+                                                class="status-event<%= event.eventStatus == 'Finalizat' ? ' status-event-done' : '' %>">
                                                 <%= event.eventStatus || 'N/A' %>
                                             </span></td>
                                         <td>
@@ -102,23 +108,31 @@
                                                 <button class="btn btn-sm btn-outline-secondary" type="button"
                                                     id="dropdownMenuButton<%= event.fileName %>"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                    <i class="bi bi-three-dots-vertical three-dots-vertical "></i>
                                                 </button>
                                                 <ul class="dropdown-menu"
                                                     aria-labelledby="dropdownMenuButton<%= event.fileName %>">
-                                                    <li><a class="dropdown-item"
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                            href="/hostess-dashboard?event=<%= event.fileName %>">
+                                                            <i class="bi bi-eye me-2"></i>Vizualizează
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item"
                                                             href="/edit-event/<%= event.fileName %>">
                                                             <i class="bi bi-pencil-square me-2"></i>Editează
-                                                        </a></li>
-                                                    <li>
-                                                        <hr class="dropdown-divider">
+                                                        </a>
                                                     </li>
-                                                    <li><button class="dropdown-item text-danger" type="button"
+                                                    <hr class="dropdown-divider">
+                                                    <li>
+                                                        <button class="dropdown-item text-danger" type="button"
                                                             data-bs-toggle="modal" data-bs-target="#deleteEventModal"
                                                             data-filename="<%= event.fileName %>"
                                                             data-eventname="<%= event.eventName %>">
                                                             <i class="bi bi-trash me-2"></i>Șterge
-                                                        </button></li>
+                                                        </button>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -161,8 +175,8 @@
                                 <div class="w-100">
                                     <label class="col-12" for="event-status">Status</label>
                                     <select class="col-12" id="event-status" name="eventStatus">
-                                        <option value="in asteptare" selected>In Asteptare</option>
-                                        <option value="terminat">Finalizat</option>
+                                        <option value="Asteptare" selected>Asteptare</option>
+                                        <option value="Finalizat">Finalizat</option>
                                     </select>
                                 </div>
                                 <div class="w-100">
@@ -175,10 +189,10 @@
                                 <div class="w-100">
                                     <label class="col-12" for="event-file">Incarca lista invitati (Excel)</label>
                                     <input class="col-12" type="file" id="event-file" name="eventFile"
-                                        accept=".xlsx,.xls" required>
+                                        accept=".xlsx,.xls">
                                 </div>
                                 <div class="w-100">
-                                    <button class="primary-button col-12" type="submit">Adauga eveniment</button>
+                                    <button class="primary-button col-12" type="submit">Adaugă Eveniment</button>
                                 </div>
                             </div>
 
@@ -235,12 +249,12 @@
                             search: "Caută:",
                             lengthMenu: "Afișează _MENU_ înregistrări per pagină",
                             info: "Afișează _START_ până la _END_ din _TOTAL_ înregistrări",
-                            infoEmpty: "Afișează 0 până la 0 din 0 înregistrări",
+                            infoEmpty: "Nu există înregistrări",
                             infoFiltered: "(filtrat din _MAX_ înregistrări totale)",
                             paginate: {
                                 first: "Prima",
                                 last: "Ultima",
-                                next: "Următoarea",
+                                next: "Urmatoarea",
                                 previous: "Precedenta"
                             },
                             emptyTable: "Nu există date disponibile în tabel",

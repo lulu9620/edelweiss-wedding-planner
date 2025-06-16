@@ -1,0 +1,859 @@
+{
+  "eventName": "Laurentiu20251",
+  "eventDate": "2025-12-14",
+  "eventLocation": "Vaslui",
+  "eventPrice": "15000",
+  "eventStatus": "Finalizat",
+  "guests": [
+    {
+      "name": "asd",
+      "tableNumber": "abcd",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[B]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[B]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[B]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Salut, Laurentiu!",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Eu sunt Ioana, ghidul tău personal de la E.ON  și te pot ajuta cu:• răspunsuri instant la întrebări frecvente despre electricitate și gaz• soluții rapide pentru cele mai întâlnite situații legate de contract, factură, plăți• detalii despre ofertele de prețLa nevoie, îți fac legătura cu un consultant E.ON.Hai să începem!",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Scrie-mi pe scurt cu ce te pot ajuta.",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "am mutat un contract de pe numele meu pe numele sotiei insa facturile intarzie sa apara",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[F]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Dacă vii de la alt furnizor, ai nevoie de montarea contorului după racordarea la rețea, ești deja clientul nostru, dar vrei să schimbi contractul ori să îl treci pe alt nume (ceea ce presupune încheierea unui contract nou), acum le poți face pe toate online, simplu și rapid. Urmează pașii menționați [aici](https://www.eon.ro/contract-energie-electrica-gaz), apoi ne ocupăm noi de tot.Pentru o procesare rapidă, îți recomandăm să ai la îndemână:- carte de identitate (jpg, .jpeg, .png sau .pdf.)- cod punct de măsură CLC și/sau POD (disponibil pe factură și/sau în certificatul de racordare/avizul tehnic de racordare)- valoarea indexului de pe contor- seria contorului- număr contract de furnizare existent (dacă e cazul).Inapoi",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "Inapoi",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[F]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Majoritatea clienților și-au găsit soluția la o solicitare similară, într-una din categoriile de mai jos. Dă click pe una sau mai multe din ele și găsește rapid răspunsul căutat.",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Oferte de preț E.ONAGG_OFERTE_01Cum închei un contract cu E.ON? (reînnoire, montare contor, schimbare titular, vin de la alt furnizor etc.)AGG_OFERTE_02Ce înseamnă POD și CLC?AGG_OFERTE_03Care este durata contractului și cum încetează?AGG_OFERTE_05Am încheiat un contract, care e stadiul acestuia?AGG_OFERTE_06Cum denunț/reziliez un contract?AGG_OFERTE_08Care sunt ofertele de preț E.ON pentru persoane juridice?AGG_OFERTE_07Ai probleme cu schimbarea furnizorului?AGG_OFERTE_09Ce este abonamentul (lei/zi) și de ce apare pe factură?AGG_OFERTE_10Caut informații despre Furnizarea de Ultimă Instanță (FUI)AGG_OFERTE_11Caut AltcevaForce_Meniu_Nivel_0",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "agent",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[F]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Dorești să fii preluat de un consultant E.ON?DaNu",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "Da",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[F]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "În cel mai scurt timp, un consultant E.ON îți va răspunde la mesaj.",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[F]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Ne cerem scuze pentru timpul de așteptare. Trecem printr-o perioadă cu un număr mare de solicitări, de aceea poate dura mai mult. Poți găsi răspunsuri instant în meniul de mai jos:Oferte de preț & Contract E.ON#OfertePretSiContract#Factura mea E.ON#FacturaMeaEON#Autocitire index & Convenție consum#IndexșiConvențieConsum#Info sold & Plată#InfoSoldSiPlata#Confirmare plată preaviz#Confirmareplatăpreaviz#Mai multe opțiuni_Meniu1_Spune-ne părerea taFeedbackBotClientRenuntaMeniuPrincipalRenunta",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Dacă ai nevoie de ajutor suplimentar, poți folosi una dintre opțiunile de pe [Servicii și ajutor](https://www.eon.ro/servicii-suport-clienti) sau poti reveni mai târziu pe chat. Mulțumim pentru răbdare și înțelegere! 😊",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "Renunta",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Conversația se încheie acum. Dacă dorești să continuăm, scrie-mi ce te interesează ori tastează **Ioana**.",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "ioana",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Alege una dintre opțiunile de mai jos sau scrie-mi pe scurt cu ce te pot ajuta:Oferte de preț & Contract E.ON#OfertePretSiContract#Factura mea E.ON#FacturaMeaEON#Autocitire index & Convenție consum#IndexșiConvențieConsum#Info sold & Plată#InfoSoldSiPlata#Confirmare plată preaviz#Confirmareplatăpreaviz#Mai multe opțiuni_Meniu1_RenuntaMeniuPrincipalRenunta",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "agent",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[F]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Dorești să fii preluat de un consultant E.ON?DaNu",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "Da",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[F]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "În cel mai scurt timp, un consultant E.ON îți va răspunde la mesaj.",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[F]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Ne cerem scuze pentru timpul de așteptare. Trecem printr-o perioadă cu un număr mare de solicitări, de aceea poate dura mai mult. Poți găsi răspunsuri instant în meniul de mai jos:Oferte de preț & Contract E.ON#OfertePretSiContract#Factura mea E.ON#FacturaMeaEON#Autocitire index & Convenție consum#IndexșiConvențieConsum#Info sold & Plată#InfoSoldSiPlata#Confirmare plată preaviz#Confirmareplatăpreaviz#Mai multe opțiuni_Meniu1_Spune-ne părerea taFeedbackBotClientRenuntaMeniuPrincipalRenunta",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Dacă ai nevoie de ajutor suplimentar, poți folosi una dintre opțiunile de pe [Servicii și ajutor](https://www.eon.ro/servicii-suport-clienti) sau poti reveni mai târziu pe chat. Mulțumim pentru răbdare și înțelegere! 😊",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "agent",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[F]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Dorești să fii preluat de un consultant E.ON?DaNu",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "Da",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[F]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "În cel mai scurt timp, un consultant E.ON îți va răspunde la mesaj.",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[A]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Counter: 1LastStep: LastResponse: TipAloc: 1",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Counter: 2LastStep: LastResponse: TipAloc: 1",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Counter: 3LastStep: LastResponse: TipAloc: 1",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Counter: 4LastStep: LastResponse: TipAloc: 1",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Counter: 5LastStep: LastResponse: TipAloc: 1",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Counter: 6LastStep: LastResponse: TipAloc: 1",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "În cel mai scurt timp posibil un consultant îți va prelua solicitarea.Dorești să aștepți?DaNu",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "Da",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Counter: 7LastStep: s1LastResponse: TipAloc: 1",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Bun venit! Eu sunt Carla, consultant E.ON, și sunt la dispoziția ta pentru următoarele minute. Scrie-mi te rog cu ce te pot ajuta.",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "buna ziua, am 2 probleme:1. am mutat contractul de pe mine, pe sotia mea iar facturile intarzie sa apara.2. a existat si un contract de prosumator tot pe numele meu si din pacate nu stiu ce se intampla in aceasta perioada cu acesta deoarece pe numele sotiei nu pot incheia un nou contract deoarece nu am primit nici o factura pana in acest moment",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "iar tot legat de punctul 2, as dori sa stiu ce se intampla cu soldul pe care il am la dumneavoastra, toata energia pe care am injectat-o in retea. din pacate odata contractul reziliat, numai am accces sa vad absolut nimic",
+      "arrived": false
+    },
+    {
+      "name": "Agent: ",
+      "tableNumber": "Pentru codul de incasare 2200379726?",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "9900152489",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "pentru acest cod de incasare",
+      "arrived": false
+    },
+    {
+      "name": "Agent: ",
+      "tableNumber": "Ati transcris si contractul de prosumator?",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "pai nu l-am transcris deoarece, online imi cere o factura de energie pe numele persoanei pe care s-a facut noul contract, dar daca pe numele sotiei nu s-a emis nici o factura, nu am cum sa fac",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "codul de incasare de pe numele sotiei pentru acelasi loc de consum este acesta",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "9900329415",
+      "arrived": false
+    },
+    {
+      "name": "Agent: ",
+      "tableNumber": "In regula, am rugamintea sa imi oferiti indecsii, atat la gaze naturale cat si la energie electrica, si voi solicita emiterea facturii, pe numele sotiei",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "puteti astepta 2 min?",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "sa pot sa ii citesc repede?",
+      "arrived": false
+    },
+    {
+      "name": "Agent: ",
+      "tableNumber": "Sigur",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "imediat",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "gaze naturale 2909",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "energie electerica 190955",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "oricum la energie exista, contor cu transmiterea index-ului la distanta",
+      "arrived": false
+    },
+    {
+      "name": "Agent: ",
+      "tableNumber": "La gaze naturale nu este cumva 3909?",
+      "arrived": false
+    },
+    {
+      "name": "Agent: ",
+      "tableNumber": "Indexul cu 3 incepe la gaze naturale",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "imediat mai verific odata sa nu fac o prostie",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "da",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "3909 cum ati spus dumneavoastra, imi cer scuze",
+      "arrived": false
+    },
+    {
+      "name": "Agent: ",
+      "tableNumber": "Nici o problema. Voi solicita emiterea facturii Duo si o veti primi pe email: laurentiu394@gmail.com",
+      "arrived": false
+    },
+    {
+      "name": "Agent: ",
+      "tableNumber": "Iar referitor la restituirea soldului din stocul de prosumator, voi transmite o noua solicitare catre departamentul acreditat, pentru a fi transferat in contul declarat pe contractul de prosumator.",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "multumesc frumos pentru ajutor",
+      "arrived": false
+    },
+    {
+      "name": "Agent: ",
+      "tableNumber": "Cu placere!",
+      "arrived": false
+    },
+    {
+      "name": "Agent: ",
+      "tableNumber": "Vă mai pot ajuta cu alte informații legate de solicitarea dumneavoastră?",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "nu, doar atat momentan. sper sa se rezolve. multumesc frumos inca odata pentru amabilitate",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "toate cele bune",
+      "arrived": false
+    },
+    {
+      "name": "Agent: ",
+      "tableNumber": "Cu placere! O zi frumoasa va doresc!",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "la fel",
+      "arrived": false
+    },
+    {
+      "name": "Agent: ",
+      "tableNumber": "Consultantul E.ON Carla a părăsit conversația.",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[M]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Conversația cu consultantul E.ON s-a încheiat.",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Ai reușit să discuți cu un consultant E.ON?DaNu",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "Da",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[F]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Sper că soluția oferită ți-a fost de folos. Ne poți face o evaluare, pentru o experiență viitoare îmbunătățită. Durează câteva secunde.",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "În ce măsură ești mulțumit de rezultatul conversației? 1 = foarte nemulțumit, iar 5 = foarte mulțumit.12345",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "5",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "În ce măsură ai recomanda unui prieten interacțiunea cu E.ON prin Chat?  0 = cu siguranță NU recomand, iar 10 = cu siguranță recomand.012345678910",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "8",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Care este motivul evaluării făcute? ",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "chat-ul are bug-uri precum. clientul primeste informatii precumCounter: 1LastStep:LastResponse:TipAloc: 1Trimis la 7 aprilie, 11:23 a.m.Robotul a spus: Counter: 2 LastStep: LastResponse: TipAloc: 1Robotul a spus:Counter: 2LastStep:LastResponse:TipAloc: 1Trimis la 7 aprilie, 11:24 a.m.Robotul a spus: Counter: 3 LastStep: LastResponse: TipAloc: 1Robotul a spus:Counter: 3LastStep:LastResponse:TipAloc: 1Trimis la 7 aprilie, 11:25 a.m.Robotul a spus: Counter: 4 LastStep: LastResponse: TipAloc: 1Robotul a spus:Counter: 4LastStep:LastResponse:TipAloc: 1Trimis la 7 aprilie, 11:26 a.m.Robotul a spus: Counter: 5 LastStep: LastResponse: TipAloc: 1Robotul a spus:Counter: 5LastStep:LastResponse:TipAloc: 1Trimis la 7 aprilie, 11:27 a.m.Robotul a spus: Counter: 6 LastStep: LastResponse: TipAloc: 1Robotul a spus:Counter: 6LastStep:LastResponse:TipAloc: 1",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Îți mulțumim pentru timpul acordat. ",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Dacă te mai pot ajuta cu ceva, apasă **Ioana**.IoanaExport Conversatie",
+      "arrived": false
+    },
+    {
+      "name": "Client: ",
+      "tableNumber": "Export Conversatie",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "[F]",
+      "arrived": false
+    },
+    {
+      "name": "Ioana: ",
+      "tableNumber": "Imediat mă ocup de procesarea discuției, te rog așteaptă puțin..",
+      "arrived": false
+    }
+  ]
+}
