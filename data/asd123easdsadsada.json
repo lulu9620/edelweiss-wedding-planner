@@ -3,7 +3,7 @@
   "eventDate": "2025-05-09",
   "eventLocation": "vaslui",
   "eventPrice": "12312312",
-  "eventStatus": "Asteptare",
+  "eventStatus": "Acceptat",
   "guests": [
     {
       "name": "4HR/D",
@@ -18,6 +18,11 @@
     {
       "name": "4HR/D",
       "tableNumber": "A/U",
+      "arrived": false
+    },
+    {
+      "name": "test123",
+      "tableNumber": "123",
       "arrived": false
     }
   ]
