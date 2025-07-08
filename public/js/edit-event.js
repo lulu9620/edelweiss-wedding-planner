@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const tableCell = newRow.insertCell(1);
             const actionsCell = newRow.insertCell(2);
 
-            nameCell.innerHTML = `<input type="text" name="guest-name" value="${guest.name}">`;
-            tableCell.innerHTML = `<input type="number" name="guest-table" value="${guest.tableNumber}">`;
-            actionsCell.innerHTML = '<button type="button" class="delete-row">Delete</button>';
-
+            nameCell.innerHTML = `<input type="text" name="guest-name" value="${guest.name}" class="col-5">`;
+            tableCell.innerHTML = `<input type="number" name="guest-table" value="${guest.tableNumber}" class="col-5">`;
+            actionsCell.innerHTML = '<button class="dropdown-item text-warning delete-row font-size-12" type="button"> <i class="bi bi-trash me-2"></i></button>';
+        
             attachRowListeners(newRow);
         });
     }
@@ -68,9 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const tableCell = newRow.insertCell(1);
         const actionsCell = newRow.insertCell(2);
 
-        nameCell.innerHTML = '<input type="text" name="guest-name">';
-        tableCell.innerHTML = '<input type="number" name="guest-table">';
-        actionsCell.innerHTML = '<button type="button" class="delete-row">Delete</button>';
+        nameCell.innerHTML = '<input type="text" name="guest-name" class="col-5">';
+        tableCell.innerHTML = '<input type="number" name="guest-table" class="col-5">';
+        actionsCell.innerHTML = '<button class="dropdown-item text-warning delete-row font-size-12" type="button"> <i class="bi bi-trash me-2"></i></button>';
 
         attachRowListeners(newRow);
     });

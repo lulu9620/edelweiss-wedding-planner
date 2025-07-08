@@ -6,14 +6,25 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Socket.io initialized');
 
     // Emit joinEvent with a dummy event filename for testing
-    const eventFilename = 'tt'; // Replace with actual event filename
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventFilename = urlParams.get('event');
     socket.emit('joinEvent', eventFilename);
     console.log('joinEvent emitted:', eventFilename);
+
+    
+    function updateArrivedCount() {
+        const arrivedCount = document.querySelectorAll('.arrived-checkbox:checked').length;
+        const arrivedCountElement = document.getElementById('arrived-count');
+        if (arrivedCountElement) {
+            arrivedCountElement.textContent = arrivedCount;
+        }
+    }
 
     // Initial data load
     socket.on('initialData', (data) => {
         console.log('Received initial data:', data);
         updateGuestList(data.guests);
+        updateArrivedCount();
     });
 
     // Handle guest update from server
@@ -22,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const checkbox = document.getElementById(`checkbox-${updatedGuest.index}`);
         if (checkbox) {
             checkbox.checked = updatedGuest.arrived;
+            updateArrivedCount();
         }
     });
 
@@ -33,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const arrived = checkbox.checked;
                 console.log('Checkbox change event emitted', { index, arrived });
                 socket.emit('checkboxChange', { index, arrived });
+                updateArrivedCount();
             });
         });
     }
@@ -41,18 +54,38 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateGuestList(guests) {
         const guestList = document.getElementById('guest-list');
         if (guestList) {
-            guestList.innerHTML = '';
-            guests.forEach((guest, index) => {
-                const row = `
-                    <tr data-id="${index}">
-                        <td>${guest.name}</td>
-                        <td>${guest.tableNumber}</td>
-                        <td><input type="checkbox" class="arrived-checkbox" id="checkbox-${index}" ${guest.arrived ? 'checked' : ''}></td>
-                    </tr>
-                `;
-                guestList.innerHTML += row;
-            });
-            attachCheckboxEvents(); // Attach events after updating the guest list
+            const tbody = guestList.querySelector('tbody');
+            if (tbody) {
+                tbody.innerHTML = '';
+                guests.forEach((guest, index) => {
+                    const row = document.createElement('tr');
+                    row.setAttribute('data-id', index);
+                    
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = guest.name;
+                    
+                    const tableCell = document.createElement('td');
+                    tableCell.textContent = guest.tableNumber;
+                    
+                    const arrivedCell = document.createElement('td');
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.className = 'arrived-checkbox';
+                    checkbox.id = `checkbox-${index}`;
+                    checkbox.checked = guest.arrived;
+                    
+                    arrivedCell.appendChild(checkbox);
+                    
+                    row.appendChild(nameCell);
+                    row.appendChild(tableCell);
+                    row.appendChild(arrivedCell);
+                    
+                    tbody.appendChild(row);
+                });
+                
+                attachCheckboxEvents(); // Attach events after updating guest list
+                updateArrivedCount(); // Update count after rendering
+            }
         }
     }
 
@@ -135,4 +168,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
 });

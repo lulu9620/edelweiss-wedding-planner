@@ -1,0 +1,106 @@
+body {
+    background: #000;
+    height: 100vh;
+    margin: 0;
+    overflow-y: hidden;
+}
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+}
+
+h3 {
+    color: #e7d294;
+}
+.dashboard-item {
+    padding: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.dashboard-item::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .dashboard-item {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    max-height: 59rem;
+    overflow-y: auto;
+    padding: 1rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .header-container {
+        row-gap: 1rem;
+    }
+  }
+
+.guest-stats-card {
+    border-radius: 5px;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.guest-stats-card-invited, .guest-stats-card-confirmed {
+    background: linear-gradient(90deg, rgba(186, 137, 72, 1) 0%, rgba(222, 195, 123, 1) 50%, rgba(250, 241, 163, 1) 100%);
+}
+
+
+#total-count, #arrived-count {
+    margin-left: 0.2rem;
+}
+table {
+    table-layout: fixed;
+    text-indent: 0;
+    text-align: center;
+    width: 100%;
+}
+table th {
+    cursor: pointer;
+}
+table.table-dark {
+    background: #1d1d1d;
+    --bs-table-bg: #1d1d1d;
+}
+
+table tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+table th, table td {
+    color: #FFF;
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding: 1rem 0.125rem;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 1rem;
+}
+
+.dataTables_wrapper .dataTables_length {
+    margin-bottom: 1rem;
+}
+
+table.dataTable thead th {
+    padding: 1rem;
+}
+
+table.dataTable tbody td {
+    vertical-align: middle;
+}
+
+.dataTables_wrapper div.dataTables_filter input {
+    min-width: 20rem;
+}
+
+#filter-name, #filter-table {
+   border: 2px solid #f6d49c;
+}

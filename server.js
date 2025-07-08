@@ -8,6 +8,7 @@ const xlsx = require('xlsx');
 const app = express();
 const server = http.createServer(app);
 const socketIo = require('socket.io');
+const session = require('express-session'); 
 const io = socketIo(server, {
     transports: ['websocket']
 });
@@ -27,6 +28,26 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Session middleware - add this right here, after other middleware setup
+app.use(session({
+    secret: 'edelweiss-wedding-planner-secret', // Change this to a secure random string
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }
+}));
+
+// Add this middleware function after your session configuration
+const requireAuth = (req, res, next) => {
+    if (req.session && req.session.isAuthenticated) {
+        next();
+    } else {
+        res.redirect('/');
+    }
+};
 
 // Serve client-side socket.io script
 app.get('/socket.io/socket.io.js', (req, res) => {
@@ -82,14 +103,18 @@ app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
     if (username === 'admin' && password === 'admin') {
+        // Set authentication in session
+        req.session.isAuthenticated = true;
+        req.session.username = username;
+        
         res.redirect('/admin-dashboard');
     } else {
-        res.send('Invalid username or password');
+        res.render('login', { error: 'Datele introduse nu sunt corecte' });
     }
 });
 
 // Route to render admin dashboard
-app.get('/admin-dashboard', (req, res) => {
+app.get('/admin-dashboard', requireAuth, (req, res) => {
     const currentDate = new Date().toISOString().slice(0, 10);
     fs.readdir(dataFolder, (err, files) => {
         if (err) {
@@ -98,23 +123,87 @@ app.get('/admin-dashboard', (req, res) => {
             return;
         }
 
-        const events = files.map(file => {
-            const fileName = file.replace('.json', '');
-            const eventFilePath = path.join(dataFolder, file);
-            const eventData = JSON.parse(fs.readFileSync(eventFilePath, 'utf8'));
-            return {
-                fileName,
-                eventName: eventData.eventName,
-                eventDate: eventData.eventDate
-            };
-        });
+        const events = files
+            .filter(file => file.endsWith('.json'))  // Only process JSON files
+            .map(file => {
+                const fileName = file.replace('.json', '');
+                const eventFilePath = path.join(dataFolder, file);
+                try {
+                    const eventData = JSON.parse(fs.readFileSync(eventFilePath, 'utf8'));
+                    return {
+                        fileName,
+                        eventName: eventData.eventName,
+                        eventDate: eventData.eventDate,
+                        eventLocation: eventData.eventLocation,
+                        eventPrice: eventData.eventPrice,
+                        eventStatus: eventData.eventStatus,
+                        guestCount: eventData.guests ? eventData.guests.length : 0
+                    };
+                } catch (error) {
+                    console.error(`Error reading file ${file}:`, error);
+                    return null;
+                }
+            })
+            .filter(Boolean);  // Remove any null values from errors
 
-        res.render('admin-dashboard', { events, currentDate });
+        // Pass the deleted parameter to the template
+        res.render('admin-dashboard', { 
+            events, 
+            currentDate, 
+            deleted: req.query.deleted === 'true'  // Pass the deleted flag
+        });
     });
 });
 
+// Logout route
+app.get('/logout', (req, res) => {
+    // If you're using express-session for session management
+    if (req.session) {
+        // Destroy the session
+        req.session.destroy(err => {
+            if (err) {
+                console.error('Error destroying session:', err);
+                return res.status(500).send('Error logging out');
+            }
+            
+            // Clear the session cookie
+            res.clearCookie('connect.sid');
+            
+            // Redirect to login page
+            res.redirect('/');
+        });
+    } else {
+        // If not using express-session, just redirect to login
+        res.redirect('/');
+    }
+});
+
+// Route to handle event deletion
+app.post('/delete-event/:filename', requireAuth, (req, res) => {
+    const filename = req.params.filename;
+    const eventFilePath = path.join(dataFolder, `${filename}.json`);
+    
+    try {
+        // Check if file exists
+        if (fs.existsSync(eventFilePath)) {
+            // Delete the file
+            fs.unlinkSync(eventFilePath);
+            console.log(`Successfully deleted event: ${filename}`);
+            
+            // Redirect back to dashboard with success message
+            res.redirect('/admin-dashboard?deleted=true');
+        } else {
+            console.error(`Event file not found: ${filename}`);
+            res.status(404).send('Event not found');
+        }
+    } catch (error) {
+        console.error(`Error deleting event ${filename}:`, error);
+        res.status(500).send(`Error deleting event: ${error.message}`);
+    }
+});
+
 // Route to render edit event page
-app.get('/edit-event/:filename', (req, res) => {
+app.get('/edit-event/:filename', requireAuth, (req, res) => {
     const fileName = req.params.filename;
     const eventFilePath = path.join(dataFolder, `${fileName}.json`);
 
@@ -128,8 +217,18 @@ app.get('/edit-event/:filename', (req, res) => {
 });
 
 // Route to handle POST request to create event
-app.post('/create-event', upload.single('eventFile'), (req, res) => {
-    const { eventName, eventDate, jsonFilename } = req.body;
+app.post('/create-event', requireAuth, upload.single('eventFile'), (req, res) => {
+    const { 
+        eventName, 
+        eventDate, 
+        jsonFilename,
+        eventLocation,
+        eventPrice,
+        eventStatus
+    } = req.body;
+
+    console.log('Create event request body:', req.body);
+    console.log('File received:', req.file ? req.file.originalname : 'No file');
 
     if (!eventName || !eventDate || !jsonFilename || !req.file) {
         return res.status(400).send('Event Name, Event Date, JSON Filename, and Event File are required.');
@@ -152,9 +251,14 @@ app.post('/create-event', upload.single('eventFile'), (req, res) => {
         const eventData = {
             eventName: eventName,
             eventDate: eventDate,
+            eventLocation: eventLocation || '',
+            eventPrice: eventPrice || '',
+            eventStatus: eventStatus || 'in asteptare',
             guests: guests
         };
 
+        console.log('Creating event:', eventData);
+        
         const targetJsonFilePath = path.join(dataFolder, `${jsonFilename}.json`);
         fs.writeFileSync(targetJsonFilePath, JSON.stringify(eventData, null, 2));
 
@@ -166,21 +270,44 @@ app.post('/create-event', upload.single('eventFile'), (req, res) => {
 });
 
 // POST route to handle updating an event
-app.post('/edit-event/:filename', upload.single('event-file'), (req, res) => {
+app.post('/edit-event/:filename', requireAuth, upload.single('event-file'), (req, res) => {
     const filename = req.params.filename;
-    const { 'event-name': eventName, 'event-date': eventDate, 'guest-list-data': guestListData } = req.body;
+    const { 
+        'event-name': eventName, 
+        'event-date': eventDate, 
+        'event-location': eventLocation,
+        'event-price': eventPrice,
+        'event-status': eventStatus,
+        'guest-list-data': guestListData 
+    } = req.body;
 
     let eventData;
     try {
         eventData = JSON.parse(fs.readFileSync(`data/${filename}.json`));
     } catch (error) {
         console.error(`Error reading or parsing file ${filename}.json:`, error);
-        eventData = { name: '', date: '', guests: [] };
+        eventData = { 
+            eventName: '', 
+            eventDate: '', 
+            eventLocation: '',
+            eventPrice: '',
+            eventStatus: '',
+            guests: [] 
+        };
     }
 
-    eventData.name = eventName;
-    eventData.date = eventDate;
+    // Update the event data
+    eventData.eventName = eventName;
+    eventData.eventDate = eventDate;
+    eventData.eventLocation = eventLocation;
+    eventData.eventPrice = eventPrice;
+    eventData.eventStatus = eventStatus;
     eventData.guests = JSON.parse(guestListData);
+
+        
+    if (guestListData) {
+        eventData.guests = JSON.parse(guestListData);
+    }
 
     fs.writeFileSync(`data/${filename}.json`, JSON.stringify(eventData, null, 2));
 
