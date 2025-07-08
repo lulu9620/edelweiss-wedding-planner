@@ -2,16 +2,6 @@ body {
     background-color: #000;
 }
 
-.hamburger-menu-container {
-  position: relative;
-}
-.hamburger-menu {
-    position: absolute;
-    right: 0d;
-    top: -2.8rem;
-    color: #e2ce9a;
-    font-size: 1.5rem;
-}
 .navigation-container {
     background-color: #000;
     border-right: 1px solid;
@@ -99,6 +89,11 @@ body {
     margin-bottom: 1.5rem;
 }
 
+h3 {
+    color: #969696;
+    font-size: 1rem;
+}
+
 .dashboard-item label {
     font-size: 0.875rem;
 }
@@ -133,33 +128,6 @@ body {
     font-size: 0.875rem;
     padding: 1rem 0.125rem;
 }
-
-.dataTables_wrapper .dataTables_filter {
-    margin-bottom: 1rem;
-}
-
-.dataTables_wrapper .dataTables_length {
-    margin-bottom: 1rem;
-}
-
-.table-responsive {
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-}
-
-table.dataTable thead th {
-    padding: 1rem;
-}
-
-table.dataTable tbody td {
-    vertical-align: middle;
-}
-
-.dataTables_wrapper div.dataTables_filter input {
-    min-width: 20rem;
-}
-
 
 .dashboard-item select {
     border: 1px solid #09090b1a;
@@ -202,7 +170,32 @@ table.dataTable tbody td {
     cursor: pointer;
 }
 
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 1rem;
+}
 
-.three-dots-vertical  {
-    color: #FFF;
+.dataTables_wrapper .dataTables_length {
+    margin-bottom: 1rem;
+}
+
+.table-responsive {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+table.dataTable thead th {
+    padding: 1rem;
+}
+
+table.dataTable tbody td {
+    vertical-align: middle;
+}
+
+.add-row-btn {
+    min-height: 2rem !important;
+}
+
+.font-size-12 {
+    font-size: 1.2rem;
 }

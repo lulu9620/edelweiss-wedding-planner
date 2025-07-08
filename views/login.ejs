@@ -21,29 +21,27 @@
     <link rel="stylesheet" href="/css/login.css">
     <meta name="robots" content="noindex,nofollow">
 </head>
-
 <body>
-    <% if (typeof error !== 'undefined' && error) { %>
-        <div class="alert alert-danger">
-            <%= error %>
-        </div>
-    <% } %>
-    
     <div class="hostess-edw-login-wrapper">
         <div class="container ">
-            <div class="row hostess-edw-login-container align-items-xl-center">
-                <div class="col-xl-6 col-lg-12 text-center">
+            <div class="row hostess-edw-login-container align-items-md-center">
+                <div class="col-12 col-lg-6 text-center">
                     <div class="edw_logo_hostess_container">
-                        <img src="https://assets.edelweiss-evenimente.ro/hostess/edw_logo_hostess.png" width="800" height="800" alt="" />
+                        <img src="https://assets.edelweiss-evenimente.ro/hostess/edw_logo_hostess.png" width="400" height="400" alt="" />
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-12">
+                <div class="col-12 col-lg-6">
                     <div class="login-container">
                         <form action="/login" method="post">
                             <label class="col-12 color-main-text" for="username">Nume utilizator</label>
                             <input class="col-12" type="text" id="username" name="username" placeholder="Introduceti numele de utilizator...." required>
                             <label class="color-main-text" for="password">Parola</label>
                             <input class="col-12" type="password" id="password" name="password" required>
+                            <% if (typeof error !== 'undefined' && error) { %>
+                                <div class="alert alert-danger">
+                                    <%= error %>
+                                </div>
+                            <% } %>
                             <button class="col-12 primary-button fw-bold" type="submit" id="login-btn">Autentificare</button>
                         </form>
                         <form action="/hostess-login" method="get" class="text-center">

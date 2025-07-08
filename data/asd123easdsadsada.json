@@ -1,0 +1,29 @@
+{
+  "eventName": "test",
+  "eventDate": "2025-05-09",
+  "eventLocation": "vaslui",
+  "eventPrice": "12312312",
+  "eventStatus": "Acceptat",
+  "guests": [
+    {
+      "name": "4HR/D",
+      "tableNumber": "G/U",
+      "arrived": false
+    },
+    {
+      "name": "1HR/4",
+      "tableNumber": "E/U",
+      "arrived": false
+    },
+    {
+      "name": "4HR/D",
+      "tableNumber": "A/U",
+      "arrived": false
+    },
+    {
+      "name": "test123",
+      "tableNumber": "123",
+      "arrived": false
+    }
+  ]
+}

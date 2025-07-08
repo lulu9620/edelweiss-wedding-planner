@@ -1,16 +1,16 @@
 {
-  "eventName": "123123",
+  "eventName": "123",
   "eventDate": "2024-07-17",
   "guests": [
     {
-      "name": "t t123",
+      "name": "Ion Ionescu",
       "tableNumber": "2",
       "arrived": false
     },
     {
       "name": "ionescu",
       "tableNumber": "3",
-      "arrived": true
+      "arrived": false
     },
     {
       "name": "popesci",
@@ -18,12 +18,11 @@
       "arrived": false
     },
     {
-      "name": "true",
+      "name": "trwe",
       "tableNumber": "2",
       "arrived": false
     }
   ],
-  "eventLocation": "iasi",
-  "eventPrice": "565234",
-  "eventStatus": "terminat"
+  "name": "123",
+  "date": "2024-07-17"
 }
