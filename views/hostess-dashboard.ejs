@@ -4,52 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hostess Dashboard - Edelweiss Wedding Planner</title>
-<<<<<<< Updated upstream
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/socket.io/socket.io.js"></script>
-    <script defer src="/js/hostess-dashboard.js"></script>
-</head>
-<body>
-    <div class="dashboard-container">
-        <h2>Hostess Dashboard</h2>
-        <div class="event-info">
-            <h3>Event: <%= eventName %></h3>
-            <div class="guest-stats">
-                <span id="guest-count">
-                    <%
-                    const arrivedCount = (guests || []).filter(guest => guest.arrived).length;
-                    const totalCount = (guests || []).length;
-                    %>
-                    Attendance: <strong><span id="arrived-count"><%= arrivedCount %></span>/<span id="total-count"><%= totalCount %></span></strong>
-                </span>
-            </div>
-        </div>
-        <div class="filter-container">
-            <input type="text" id="filter-name" placeholder="Filter by name">
-            <input type="text" id="filter-table" placeholder="Filter by table number">
-        </div>
-        <table id="guest-list">
-            <thead>
-                <tr>
-                    <th data-sort="name" data-order="asc">Name</th>
-                    <th data-sort="tableNumber" data-order="asc">Table Number</th>
-                    <th data-sort="arrived" data-order="asc">Arrived</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% (guests || []).forEach((guest, index) => { %>
-                    <tr data-id="<%= index %>">
-                        <td><%= guest.name %></td>
-                        <td><%= guest.tableNumber %></td>
-                        <td><input type="checkbox" class="arrived-checkbox" id="checkbox-<%= index %>" <%= guest.arrived ? 'checked' : '' %>></td>
-                    </tr>
-                <% }) %>
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
-=======
     <description></description>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -317,4 +271,3 @@ function updateGuestList(guests) {
 </script>
   </body>
 </html>
->>>>>>> Stashed changes

@@ -295,51 +295,6 @@ document.addEventListener("DOMContentLoaded", () => {
           statusButton.setAttribute("data-guest-status", newStatus);
         }
 
-<<<<<<< Updated upstream
-        cells.forEach((cell, index) => {
-            if (property === 'name' && index === 0) {
-                value = cell.textContent.trim().toLowerCase();
-            } else if (property === 'tableNumber' && index === 1) {
-                value = cell.textContent.trim().toLowerCase();
-            } else if (property === 'arrived' && index === 2) {
-                const checkbox = cell.querySelector('.arrived-checkbox');
-                value = checkbox.checked ? '1' : '0'; // Convert boolean to sortable string
-            }
-        });
-
-        return value;
-    }
-
-    const filterNameInput = document.getElementById('filter-name');
-    if (filterNameInput) {
-        filterNameInput.addEventListener('input', () => {
-            filterGuests();
-        });
-    }
-
-    const filterTableInput = document.getElementById('filter-table');
-    if (filterTableInput) {
-        filterTableInput.addEventListener('input', () => {
-            filterGuests();
-        });
-    }
-
-    // Function to filter guests based on input values
-    function filterGuests() {
-        const filterValue = filterNameInput.value.toLowerCase();
-        const filterTable = filterTableInput.value.toLowerCase();
-        const rows = document.querySelectorAll('#guest-list tbody tr');
-        rows.forEach((row) => {
-            const name = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
-            const table = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-            if (name.includes(filterValue) && table.includes(filterTable)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    }
-=======
         // Close the modal
         const modal = bootstrap.Modal.getInstance(statusModal);
         modal.hide();
@@ -349,5 +304,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
->>>>>>> Stashed changes
 });
