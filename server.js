@@ -40,6 +40,14 @@ app.use(session({
     }
 }));
 
+// Add this middleware before your routes
+app.use((req, res, next) => {
+    res.header('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.header('Pragma', 'no-cache');
+    res.header('Expires', '0');
+    next();
+});
+
 // Add this middleware function after your session configuration
 const requireAuth = (req, res, next) => {
     if (req.session && req.session.isAuthenticated) {
@@ -52,6 +60,16 @@ const requireAuth = (req, res, next) => {
 // Serve client-side socket.io script
 app.get('/socket.io/socket.io.js', (req, res) => {
     res.sendFile(path.join(__dirname, '/node_modules/socket.io/client-dist/socket.io.js'));
+});
+
+app.get('/check-auth', (req, res) => {
+    console.log('Check auth request received');
+    console.log('Session:', req.session);
+    console.log('Is authenticated:', req.session && req.session.isAuthenticated);
+    
+    res.json({
+        authenticated: !!(req.session && req.session.isAuthenticated)
+    });
 });
 
 // Handle real-time connections
@@ -93,9 +111,21 @@ io.on('connection', (socket) => {
     });
 });
 
-// Route to render login page
+// Route to render login page or redirect if already logged in
 app.get('/', (req, res) => {
-    res.render('login');
+    console.log('Root route accessed');
+    console.log('Session:', req.session);
+    console.log('Is authenticated:', req.session && req.session.isAuthenticated);
+    
+    // Check if user is already logged in
+    if (req.session && req.session.isAuthenticated) {
+        console.log('User is authenticated, redirecting to dashboard');
+        return res.redirect('/admin-dashboard');
+    }
+    
+    // User is not logged in, show the login page
+    console.log('User is not authenticated, showing login page');
+    res.render('login', { error: null });
 });
 
 // Route to handle login form submission

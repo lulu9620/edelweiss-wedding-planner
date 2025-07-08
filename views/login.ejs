@@ -10,6 +10,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autentificare Hostess | Edelweiss Evenimente</title>
+    <script>
+        if (sessionStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = '/admin-dashboard';
+        }
+    </script>
+
     <descrption></descrption>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/login.css">
@@ -46,5 +52,19 @@
             </div>
         </div>
     </div>
+    <script>
+    // Check if user is logged in via a quick API endpoint
+    fetch('/check-auth', { 
+        method: 'GET',
+        credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.authenticated) {
+            window.location.href = '/admin-dashboard';
+        }
+    })
+    .catch(error => console.error('Auth check error:', error));
+</script>
 </body>
 </html>

@@ -1,0 +1,28 @@
+{
+  "eventName": "123",
+  "eventDate": "2024-07-17",
+  "guests": [
+    {
+      "name": "Ion Ionescu",
+      "tableNumber": "2",
+      "arrived": false
+    },
+    {
+      "name": "ionescu",
+      "tableNumber": "3",
+      "arrived": false
+    },
+    {
+      "name": "popesci",
+      "tableNumber": "2",
+      "arrived": false
+    },
+    {
+      "name": "trwe",
+      "tableNumber": "2",
+      "arrived": false
+    }
+  ],
+  "name": "123",
+  "date": "2024-07-17"
+}
