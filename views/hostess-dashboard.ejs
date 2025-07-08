@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hostess Dashboard - Edelweiss Wedding Planner</title>
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/socket.io/socket.io.js"></script>
     <script defer src="/js/hostess-dashboard.js"></script>
@@ -48,3 +49,272 @@
     </div>
 </body>
 </html>
+=======
+    <description></description>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="/js/hostess-dashboard.js"></script>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/hostess-dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container dashboard-container">
+      <div class="row header-container">
+        <div class="col-12 col-md-4 text-center">
+          <a href="/">
+            <img
+              src="https://assets.edelweiss-evenimente.ro/hostess/edw_logo_hostess.png"
+              width="200"
+              height="200"
+              alt=""
+            />
+          </a>
+        </div>
+        <div class="col-12 col-md-4 align-self-center">
+          <div class="event-info">
+            <div class="row text-center">
+              <h3><%= eventName %></h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 align-self-center">
+          <% const arrivedCount=(guests || []).filter(guest=>
+          guest.arrived).length; const totalCount = (guests || []).length; %>
+          <!-- Fix for Persoane Invitate -->
+          <div class="guest-stats-card guest-stats-card-invited">
+            <i class="bi bi-people"></i>
+            <span id="total-count"> <%= totalCount %> </span>
+            <span>&nbsp;Persoane Invitate</span>
+          </div>
+
+          <!-- Fix for Persoane Confirmate -->
+          <div class="guest-stats-card guest-stats-card-confirmed">
+            <i class="bi bi-people"></i>
+            <span id="arrived-count"><%= arrivedCount %></span>
+            <span>&nbsp;Persoane Confirmate</span>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <div class="row gy-3 filter-container">
+          <div class="col-12 col-md-7 col-lg-4 offset-lg-2">
+            <input
+              type="text"
+              class="w-100"
+              id="filter-name"
+              placeholder="Caută după nume..."
+            />
+          </div>
+          <div class="col-12 col-md-5 col-lg-4">
+            <input
+              type="text"
+              id="filter-table"
+              class="w-100"
+              placeholder="Caută după numărul mesei..."
+            />
+          </div>
+        </div>
+        <div class="dashboard-item">
+          <div class="row dt-row">
+            <div class="col-12">
+              <table id="guest-list" class="dataTable guest-list">
+                <thead>
+                  <tr>
+                    <th data-sort="name" data-order="asc">Nume Invitat</th>
+                    <th data-sort="tableNumber" data-order="asc">Nr. Masa</th>
+                    <th data-sort="arrived" data-order="asc">Status Invitat</th>
+                    <th>Acțiuni</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% (guests || []).forEach((guest, index)=> { %>
+                  <tr data-id="<%= index %>">
+                    <td><%= guest.name %></td>
+                    <td><%= guest.tableNumber %></td>
+                    <td>
+                      <input type="checkbox" class="arrived-checkbox"
+                      id="checkbox-<%= index %>" <%=guest.arrived ? 'checked' :
+                      '' %>>
+                    </td>
+                    <td>
+                      <button 
+                        class="btn btn-sm btn-outline-secondary"
+                        type="button" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#statusModal"
+                        data-guest-id="<%= index %>"
+                        data-guest-name="<%= guest.name %>"
+                      >
+                        <i class="bi bi-pencil-square"></i> Status
+                      </button>
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Status Change Modal -->
+<div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="statusModalLabel">Schimbă status invitat</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Actualizează statusul pentru <strong id="guestNameDisplay"></strong>:</p>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="statusOption" id="statusPresent" value="present">
+          <label class="form-check-label" for="statusPresent">
+            Prezent
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="statusOption" id="statusAbsent" value="absent">
+          <label class="form-check-label" for="statusAbsent">
+            Absent
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anulează</button>
+        <button type="button" class="btn btn-primary" id="saveStatusButton">Salvează</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Function to update guest list in the UI
+function updateGuestList(guests) {
+    const guestList = document.getElementById('guest-list');
+    if (guestList) {
+        const tbody = guestList.querySelector('tbody');
+        if (tbody) {
+            tbody.innerHTML = '';
+            guests.forEach((guest, index) => {
+                const row = document.createElement('tr');
+                row.setAttribute('data-id', index);
+                
+                const nameCell = document.createElement('td');
+                nameCell.textContent = guest.name;
+                
+                const tableCell = document.createElement('td');
+                tableCell.textContent = guest.tableNumber;
+                
+                const arrivedCell = document.createElement('td');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.className = 'arrived-checkbox';
+                checkbox.id = `checkbox-${index}`;
+                checkbox.checked = guest.arrived;
+                
+                arrivedCell.appendChild(checkbox);
+                
+                // Create action cell with status button
+                const actionCell = document.createElement('td');
+                const statusButton = document.createElement('button');
+                statusButton.className = 'btn btn-sm btn-outline-secondary';
+                statusButton.type = 'button';
+                statusButton.setAttribute('data-bs-toggle', 'modal');
+                statusButton.setAttribute('data-bs-target', '#statusModal');
+                statusButton.setAttribute('data-guest-id', index);
+                statusButton.setAttribute('data-guest-name', guest.name);
+                
+                const icon = document.createElement('i');
+                icon.className = 'bi bi-pencil-square me-1';
+                statusButton.appendChild(icon);
+                statusButton.appendChild(document.createTextNode(' Status'));
+                
+                actionCell.appendChild(statusButton);
+                
+                row.appendChild(nameCell);
+                row.appendChild(tableCell);
+                row.appendChild(arrivedCell);
+                row.appendChild(actionCell);
+                
+                tbody.appendChild(row);
+            });
+            
+            attachCheckboxEvents(); // Attach events after updating guest list
+            updateArrivedCount(); // Update count after rendering
+        }
+    }
+}
+    </script>
+    <script>
+  // Modal status change functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    let currentGuestId = null;
+    
+    // When the modal is about to be shown
+    const statusModal = document.getElementById('statusModal');
+    if (statusModal) {
+      statusModal.addEventListener('show.bs.modal', function(event) {
+        // Button that triggered the modal
+        const button = event.relatedTarget;
+        
+        // Extract info from data attributes
+        currentGuestId = button.getAttribute('data-guest-id');
+        const guestName = button.getAttribute('data-guest-name');
+        
+        // Update the modal content
+        document.getElementById('guestNameDisplay').textContent = guestName;
+        
+        // Set the current status
+        const isChecked = document.getElementById(`checkbox-${currentGuestId}`).checked;
+        if (isChecked) {
+          document.getElementById('statusPresent').checked = true;
+        } else {
+          document.getElementById('statusAbsent').checked = true;
+        }
+      });
+    }
+    
+    // When save button is clicked
+    const saveStatusButton = document.getElementById('saveStatusButton');
+    if (saveStatusButton) {
+      saveStatusButton.addEventListener('click', function() {
+        if (currentGuestId !== null) {
+          const newStatus = document.getElementById('statusPresent').checked;
+          const checkbox = document.getElementById(`checkbox-${currentGuestId}`);
+          
+          // Update the checkbox
+          checkbox.checked = newStatus;
+          
+          // Trigger the change event to update the server
+          const event = new Event('change', { bubbles: true });
+          checkbox.dispatchEvent(event);
+          
+          // Close the modal
+          const modal = bootstrap.Modal.getInstance(statusModal);
+          modal.hide();
+        }
+      });
+    }
+  });
+</script>
+  </body>
+</html>
+>>>>>>> Stashed changes

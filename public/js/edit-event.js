@@ -1,5 +1,5 @@
 // public/js/edit-event.js
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const guestListTable = document.getElementById('guest-list').getElementsByTagName('tbody')[0];
     const addRowButton = document.getElementById('add-row');
     const eventForm = document.getElementById('event-form');
@@ -71,6 +71,13 @@ document.addEventListener('DOMContentLoaded', () => {
         nameCell.innerHTML = '<input type="text" name="guest-name">';
         tableCell.innerHTML = '<input type="number" name="guest-table">';
         actionsCell.innerHTML = '<button type="button" class="delete-row">Delete</button>';
+
+        // Insert at the beginning of the table body
+        if (guestListTable.firstChild) {
+            guestListTable.insertBefore(newRow, guestListTable.firstChild);
+        } else {
+            guestListTable.appendChild(newRow);
+        }
 
         attachRowListeners(newRow);
     });
