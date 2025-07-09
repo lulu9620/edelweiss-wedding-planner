@@ -132,7 +132,7 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    if (username === 'admin' && password === 'admin') {
+    if (username === 'irina' && password === 'Sasuke29') {
         // Set authentication in session
         req.session.isAuthenticated = true;
         req.session.username = username;
