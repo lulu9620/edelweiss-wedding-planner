@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update the status display
     const statusElement = document.querySelector(`[data-guest-index="${updatedGuest.index}"]`);
     if (statusElement) {
-        statusElement.textContent = updatedGuest.arrived ? 'Ajuns' : 'Așteptare';
+        statusElement.textContent = updatedGuest.arrived ? 'Prezent' : 'Așteptare';
         statusElement.className = updatedGuest.arrived ? 'guest-status guest-arrived' : 'guest-status guest-waiting';
         statusElement.setAttribute('data-guest-status', updatedGuest.arrived);
         
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       statusSpan.className = isArrived
         ? "guest-status guest-arrived"
         : "guest-status guest-waiting";
-      statusSpan.textContent = isArrived ? "Ajuns" : "Așteptare";
+      statusSpan.textContent = isArrived ? "Prezent" : "Așteptare";
 
       statusCell.appendChild(statusSpan);
       row.appendChild(statusCell);
@@ -129,11 +129,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Add icon to button
       const icon = document.createElement("i");
-      icon.className = "bi bi-pencil-square";
+      icon.className = "bi bi-three-dots-vertical three-dots-vertical";
       statusButton.appendChild(icon);
 
       // Add text to button
-      const textNode = document.createTextNode(" Status");
+      const textNode = document.createTextNode("");
       statusButton.appendChild(textNode);
 
       actionCell.appendChild(statusButton);
@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
           `[data-guest-index="${currentGuestId}"]`
         );
         if (statusElement) {
-          statusElement.textContent = newStatus ? "Ajuns" : "Așteptare";
+          statusElement.textContent = newStatus ? "Prezent" : "Așteptare";
           statusElement.className = newStatus
             ? "guest-status guest-arrived"
             : "guest-status guest-waiting";

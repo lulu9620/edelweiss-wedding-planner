@@ -15,27 +15,7 @@
     <link rel="stylesheet" href="/css/hostess-dashboard.css">
     <script src="/socket.io/socket.io.js"></script>
     <script defer src="/js/hostess-dashboard.js"></script>
-    
-    <style>
-      .guest-status {
-        padding: 4px 12px;
-        border-radius: 16px;
-        display: inline-block;
-        text-align: center;
-        font-weight: 500;
-        font-size: 0.875rem;
-      }
-      
-      .guest-arrived {
-        background-color: #d4edda;
-        color: #155724;
-      }
-      
-      .guest-waiting {
-        background-color: #f8f9fa;
-        color: #6c757d;
-      }
-    </style>
+
   </head>
 
   <body>
@@ -62,16 +42,20 @@
           <% const arrivedCount=(guests || []).filter(guest=>
           guest.arrived).length; const totalCount = (guests || []).length; %>
           <!-- Fix for Persoane Invitate -->
-          <div class="guest-stats-card guest-stats-card-invited">
-            <i class="bi bi-people"></i>
-            <span id="total-count"><%= totalCount %></span>
+          <div class="guest-stats-card guest-stats-card-invited d-flex flex-column">
+            <div class="">
+              <i class="bi bi-people"></i>
+              <span id="total-count"><%= totalCount %></span>
+            </div>
             <span>&nbsp;Persoane Invitate</span>
           </div>
 
           <!-- Fix for Persoane Confirmate -->
-          <div class="guest-stats-card guest-stats-card-confirmed">
-            <i class="bi bi-people"></i>
-            <span id="arrived-count"><%= arrivedCount %></span>
+          <div class="guest-stats-card guest-stats-card-confirmed d-flex flex-column">
+            <div>
+              <i class="bi bi-people"></i>
+              <span id="arrived-count"><%= arrivedCount %></span>
+            </div>
             <span>&nbsp;Persoane Confirmate</span>
           </div>
         </div>
@@ -117,12 +101,12 @@
                       <span class="guest-status <%= guest.arrived ? 'guest-arrived' : 'guest-waiting' %>" 
                             data-guest-index="<%= index %>"
                             data-guest-status="<%= guest.arrived %>">
-                        <%= guest.arrived ? 'Ajuns' : 'Așteptare' %>
+                        <%= guest.arrived ? 'Prezent' : 'Așteptare' %>
                       </span>
                     </td>
                     <td>
                       <button 
-                        class="btn btn-sm btn-outline-secondary"
+                        class="btn btn-sm btn-outline-secondary three-dots-vertical"
                         type="button" 
                         data-bs-toggle="modal" 
                         data-bs-target="#statusModal"
@@ -130,7 +114,7 @@
                         data-guest-name="<%= guest.name %>"
                         data-guest-status="<%= guest.arrived %>"
                       >
-                        <i class="bi bi-pencil-square"></i> Status
+                        <i class="bi bi-three-dots-vertical three-dots-vertical "></i>
                       </button>
                     </td>
                   </tr>
@@ -148,26 +132,28 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="statusModalLabel">Schimbă status invitat</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title" id="statusModalLabel">Status Invitat</h5>
+            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
           </div>
           <div class="modal-body">
-            <p>Actualizează statusul pentru <strong id="guestNameDisplay"></strong>:</p>
-            <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="statusOption" id="statusPresent" value="present">
-              <label class="form-check-label" for="statusPresent">
-                Prezent
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="statusOption" id="statusAbsent" value="absent">
-              <label class="form-check-label" for="statusAbsent">
-                Absent
-              </label>
+            <p class="text-center">Actualizează statusul pentru <strong id="guestNameDisplay"></strong>:</p>
+            <div class="d-flex gap-3">
+              <div class="form-check w-50 d-flex mb-2 align-items-center justify-content-center gap-2">
+                <input class="form-check-input" type="radio" name="statusOption" id="statusPresent" value="present">
+                <label class="form-check-label" for="statusPresent">
+                  Prezent
+                </label>
+              </div>
+              <div class="form-check w-50 d-flex mb-2 align-items-center justify-content-center gap-2">
+                <input class="form-check-input" type="radio" name="statusOption" id="statusAbsent" value="absent">
+                <label class="form-check-label" for="statusAbsent">
+                  Așteptare
+                </label>
+              </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anulează</button>
+            <button type="button" class="btn btn-secondary revokeStatusButton" data-bs-dismiss="modal">Anulează</button>
             <button type="button" class="btn btn-primary" id="saveStatusButton">Salvează</button>
           </div>
         </div>

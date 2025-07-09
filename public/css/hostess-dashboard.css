@@ -23,8 +23,10 @@ h3 {
 .dashboard-item {
     padding: 1rem;
     margin-bottom: 2.5rem;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
     max-height: 59rem;
     overflow-y: auto;
 }
@@ -33,11 +35,17 @@ h3 {
     display: none;
 }
 
+.filter-container {
+    margin-bottom: 20px;
+}
+
 /* Guest stats cards */
 .guest-stats-card {
     border-radius: 5px;
+    box-sizing: border-box;
     color: #000;
     display: flex;
+    padding: 0.375rem;
     align-items: center;
     justify-content: center;
     min-height: 2.5rem;
@@ -47,12 +55,10 @@ h3 {
 
 .guest-stats-card-invited,
 .guest-stats-card-confirmed {
-    background: linear-gradient(
-        90deg,
-        rgba(186, 137, 72, 1) 0%,
-        rgba(222, 195, 123, 1) 50%,
-        rgba(250, 241, 163, 1) 100%
-    );
+    background: linear-gradient(90deg,
+            rgba(186, 137, 72, 1) 0%,
+            rgba(222, 195, 123, 1) 50%,
+            rgba(250, 241, 163, 1) 100%);
 }
 
 #total-count,
@@ -120,22 +126,46 @@ table.dataTable tbody td {
 
 /* Guest status indicators */
 .guest-status {
-    padding: 4px 12px;
-    border-radius: 16px;
+    border-radius: 4px;
     display: inline-block;
-    text-align: center;
-    font-weight: 500;
     font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 0.375rem;
+    min-width: 80px;
 }
 
-.guest-arrived {
+
+.guest-arrived,
+#saveStatusButton {
     background-color: #d4edda;
     color: #155724;
 }
 
+.revokeStatusButton {
+    background-color: #dc3545;
+}
+
 .guest-waiting {
-    background-color: #f8f9fa;
-    color: #6c757d;
+    background-color: #e9bd4f;
+    color: #000;
+}
+
+.revokeStatusButton,
+#saveStatusButton {
+    border: none;
+}
+
+.dashboard-item .btn.btn-sm.btn-outline-secondary:hover {
+    background-color: #e3c05c;
+}
+
+.three-dots-vertical {
+    color: #FFF;
+}
+
+.event-info h3 {
+    word-break: break-word;
 }
 
 /* Dropdown positioning fixes - only needed if using dropdowns */
@@ -172,8 +202,14 @@ th.sorted-desc::after {
 
 /* Modal styling enhancements */
 .modal-content {
-    background-color: #262626;
+    background-color: #000000;
     color: #fff;
+    border-radius: 10px;
+    border: 2px solid #d6b770;
+}
+
+.modal.show .modal-dialog {
+    top: 25%;
 }
 
 .modal-header {
@@ -194,7 +230,16 @@ th.sorted-desc::after {
     border-color: #6c757d;
 }
 
+.form-check-input[type="radio"] {
+    width: 40px;
+}
+
+.form-check-label {
+    margin-top: 0.5rem;
+}
+
 .form-check-input:checked {
     background-color: #d6b770;
     border-color: #d6b770;
+
 }
