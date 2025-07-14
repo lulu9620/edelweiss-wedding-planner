@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const tableHeaders = document.querySelectorAll('#guest-list thead th[data-sort]');
 
     let guests = [];
+    let originalGuests = []; // Store original guest data to preserve arrived status
 
     function updateGuestListData() {
         const rows = guestListTable.rows;
@@ -15,7 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < rows.length; i++) {
             const name = rows[i].querySelector('input[name="guest-name"]').value;
             const tableNumber = rows[i].querySelector('input[name="guest-table"]').value;
-            guests.push({ name, tableNumber, arrived: false });
+            
+            // Find the original guest data to preserve arrived status
+            const originalGuest = originalGuests.find(g => g.name === name) || { arrived: false };
+            
+            guests.push({ 
+                name, 
+                tableNumber, 
+                arrived: originalGuest.arrived 
+            });
         }
     }
 
@@ -117,5 +126,29 @@ document.addEventListener('DOMContentLoaded', function() {
         attachRowListeners(row);
     });
 
+    // Initialize original guest data from the existing table
+    function initializeOriginalGuests() {
+        originalGuests = [];
+        const rows = guestListTable.rows;
+        for (let i = 0; i < rows.length; i++) {
+            const nameInput = rows[i].querySelector('input[name="guest-name"]');
+            const tableInput = rows[i].querySelector('input[name="guest-table"]');
+            const row = rows[i];
+            
+            if (nameInput && tableInput) {
+                // Check if the row has data-arrived attribute or use a default
+                const arrived = row.dataset.arrived === 'true' || false;
+                
+                originalGuests.push({
+                    name: nameInput.value,
+                    tableNumber: tableInput.value,
+                    arrived: arrived
+                });
+            }
+        }
+    }
+
+    // Initialize original guests and current guests
+    initializeOriginalGuests();
     updateGuestListData();
 });

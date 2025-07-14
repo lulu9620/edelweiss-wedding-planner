@@ -62,8 +62,9 @@ h3 {
 }
 
 #total-count,
-#arrived-count {
-    margin-left: 0.2rem;
+#arrived-count,
+#waiting-count {
+  margin-left: 0.2rem;
 }
 
 /* Table styling */

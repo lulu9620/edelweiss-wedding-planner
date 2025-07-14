@@ -127,7 +127,7 @@
                         </thead>
                         <tbody>
                             <% (eventData.guests || []).forEach((guest, index)=> { %>
-                                <tr>
+                                <tr data-arrived="<%= guest.arrived || false %>">
                                     <td><input type="text" name="guest-name" value="<%= guest.name %>" class="col-5"></td>
                                     <td><input type="text" name="guest-table" value="<%= guest.tableNumber %>" class="col-5"></td>
                                     <td>

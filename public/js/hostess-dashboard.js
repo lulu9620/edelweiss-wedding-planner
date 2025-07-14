@@ -14,9 +14,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Update the arrived count function to use status elements instead of checkboxes
   function updateArrivedCount() {
     const arrivedCount = document.querySelectorAll('.guest-status.guest-arrived').length;
+    const totalCount = document.querySelectorAll('.guest-status').length;
+    const waitingCount = totalCount - arrivedCount;
+    
     const arrivedCountElement = document.getElementById('arrived-count');
     if (arrivedCountElement) {
         arrivedCountElement.textContent = arrivedCount;
+    }
+    
+    const waitingCountElement = document.getElementById('waiting-count');
+    if (waitingCountElement) {
+        waitingCountElement.textContent = waitingCount;
     }
   }
   
@@ -166,10 +174,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const aValue = getValue(a, property);
       const bValue = getValue(b, property);
 
-      if (order === "asc") {
-        return aValue.localeCompare(bValue);
+      // Handle numeric sorting for table numbers
+      if (property === 'tableNumber') {
+        const aNum = parseFloat(aValue) || 0;
+        const bNum = parseFloat(bValue) || 0;
+        
+        if (order === "asc") {
+          return aNum - bNum;
+        } else {
+          return bNum - aNum;
+        }
       } else {
-        return bValue.localeCompare(aValue);
+        // Use string comparison for other properties
+        if (order === "asc") {
+          return aValue.localeCompare(bValue);
+        } else {
+          return bValue.localeCompare(aValue);
+        }
       }
     });
 
@@ -187,7 +208,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (property === 'name' && index === 0) {
             value = cell.textContent.trim().toLowerCase();
         } else if (property === 'tableNumber' && index === 1) {
-            value = cell.textContent.trim().toLowerCase();
+            // Return the raw text for table number (will be converted to number in sortGuests)
+            value = cell.textContent.trim();
         } else if (property === 'arrived' && index === 2) {
             // Get status from data attribute
             const statusSpan = cell.querySelector('.guest-status');
