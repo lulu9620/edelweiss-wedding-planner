@@ -272,11 +272,20 @@ app.post('/create-event', requireAuth, upload.single('eventFile'), (req, res) =>
         const sheet = workbook.Sheets[sheetName];
         const rows = xlsx.utils.sheet_to_json(sheet, { header: 1 });
 
-        const guests = rows.slice(1).map(row => ({
-            name: row[0],
-            tableNumber: row[1],
-            arrived: false
-        }));
+        const guests = rows.slice(1)
+            .filter(row => {
+                // Filter out rows where all columns are empty or undefined
+                return row && row.some(cell => cell !== undefined && cell !== null && cell.toString().trim() !== '');
+            })
+            .map(row => ({
+                name: (row[0] || '').toString().trim(),
+                tableNumber: (row[1] || '').toString().trim(),
+                arrived: false
+            }))
+            .filter(guest => {
+                // Additional filter to ensure we have at least a name
+                return guest.name !== '';
+            });
 
         const eventData = {
             eventName: eventName,
