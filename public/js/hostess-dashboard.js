@@ -253,6 +253,27 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+  
+  // For the first input (filter-name)
+  function toggleResetFilterName() {
+    const input = document.getElementById('filter-name');
+    const button = document.getElementById('reset-filter-name');
+
+    if (input.value.length > 0) {
+      button.style.display = 'block';
+    } else {
+      button.style.display = 'none';
+    }
+  }
+
+  function clearInput() {
+    document.getElementById('filter-name').value = '';
+    document.getElementById('reset-filter-name').style.display = 'none';
+    filterGuests();
+  }
+
+    window.toggleResetFilterName = toggleResetFilterName;
+    window.clearInput = clearInput;
 
   // REMOVE THIS NESTED EVENT LISTENER - It's causing the problem
   // document.addEventListener("DOMContentLoaded", function () { ... });

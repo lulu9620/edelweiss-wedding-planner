@@ -1,0 +1,684 @@
+{
+  "eventName": "Coral 16-08-2025",
+  "eventDate": "2025-08-16",
+  "eventLocation": "Coral",
+  "eventPrice": "500",
+  "eventStatus": "Acceptat",
+  "guests": [
+    {
+      "name": "NASTASE COSTEL",
+      "tableNumber": "2",
+      "arrived": false
+    },
+    {
+      "name": "SCRIPCARIU GABRIELA",
+      "tableNumber": "2",
+      "arrived": false
+    },
+    {
+      "name": "SCRIPCARIU FELOMINA",
+      "tableNumber": "2",
+      "arrived": false
+    },
+    {
+      "name": "ZURBAGIU TALICA",
+      "tableNumber": "2",
+      "arrived": false
+    },
+    {
+      "name": "SCRIPCARIU MARIUS",
+      "tableNumber": "2",
+      "arrived": false
+    },
+    {
+      "name": "TROFIN DANUT",
+      "tableNumber": "7",
+      "arrived": false
+    },
+    {
+      "name": "TROFIN COSTEL",
+      "tableNumber": "7",
+      "arrived": false
+    },
+    {
+      "name": "DUHAN FANEL",
+      "tableNumber": "7",
+      "arrived": false
+    },
+    {
+      "name": "BRANZA COSTEL",
+      "tableNumber": "7",
+      "arrived": false
+    },
+    {
+      "name": "RAILEANU ION",
+      "tableNumber": "7",
+      "arrived": false
+    },
+    {
+      "name": "MUSTEATA COSTEL",
+      "tableNumber": "6",
+      "arrived": false
+    },
+    {
+      "name": "MUSTEATA DANUT",
+      "tableNumber": "6",
+      "arrived": false
+    },
+    {
+      "name": "SZABO MONICA",
+      "tableNumber": "6",
+      "arrived": false
+    },
+    {
+      "name": "BOGHIU D-TRU",
+      "tableNumber": "6",
+      "arrived": false
+    },
+    {
+      "name": "PASCAL C-TIN",
+      "tableNumber": "6",
+      "arrived": false
+    },
+    {
+      "name": "BOLBOROS GHEORGHE",
+      "tableNumber": "1",
+      "arrived": false
+    },
+    {
+      "name": "AGAINOAIEI TICU",
+      "tableNumber": "1",
+      "arrived": false
+    },
+    {
+      "name": "GAVRILESCU TINEL",
+      "tableNumber": "1",
+      "arrived": false
+    },
+    {
+      "name": "SILION RAZVAN",
+      "tableNumber": "1",
+      "arrived": false
+    },
+    {
+      "name": "CIUBUG MIREL",
+      "tableNumber": "1",
+      "arrived": false
+    },
+    {
+      "name": "VICLIUC GHEORGHE",
+      "tableNumber": "11",
+      "arrived": false
+    },
+    {
+      "name": "PONOR TICUTA",
+      "tableNumber": "11",
+      "arrived": false
+    },
+    {
+      "name": "SUMANARIU IOAN",
+      "tableNumber": "11",
+      "arrived": false
+    },
+    {
+      "name": "PASCAL GICA",
+      "tableNumber": "11",
+      "arrived": false
+    },
+    {
+      "name": "IANCU IOAN",
+      "tableNumber": "11",
+      "arrived": false
+    },
+    {
+      "name": "IVANUTA LILIANA",
+      "tableNumber": "12",
+      "arrived": false
+    },
+    {
+      "name": "DAVIDESCU DORIN",
+      "tableNumber": "12",
+      "arrived": false
+    },
+    {
+      "name": "DAVIDESCU DANA",
+      "tableNumber": "12",
+      "arrived": true
+    },
+    {
+      "name": "COSTAN CRENGUTA",
+      "tableNumber": "12",
+      "arrived": false
+    },
+    {
+      "name": "CALDARUS C-TIN",
+      "tableNumber": "12",
+      "arrived": false
+    },
+    {
+      "name": "MATEI IONUT",
+      "tableNumber": "12",
+      "arrived": false
+    },
+    {
+      "name": "CHIRIAC IONUT",
+      "tableNumber": "16",
+      "arrived": false
+    },
+    {
+      "name": "RUGINA VASILE",
+      "tableNumber": "16",
+      "arrived": false
+    },
+    {
+      "name": "SCRIPNICIUC DORU",
+      "tableNumber": "16",
+      "arrived": false
+    },
+    {
+      "name": "CRETU MIHAI",
+      "tableNumber": "16",
+      "arrived": false
+    },
+    {
+      "name": "MUNTEANU ANDREI",
+      "tableNumber": "16",
+      "arrived": false
+    },
+    {
+      "name": "IANCU DENISA",
+      "tableNumber": "15",
+      "arrived": false
+    },
+    {
+      "name": "BRANZA IOANA",
+      "tableNumber": "15",
+      "arrived": false
+    },
+    {
+      "name": "BOLBOROS MARIEVA",
+      "tableNumber": "15",
+      "arrived": false
+    },
+    {
+      "name": "PASCARIU RADU",
+      "tableNumber": "15",
+      "arrived": false
+    },
+    {
+      "name": "SCRIPCARIU DARIUS",
+      "tableNumber": "15",
+      "arrived": false
+    },
+    {
+      "name": "OCHIANA SABRINA",
+      "tableNumber": "15",
+      "arrived": false
+    },
+    {
+      "name": "SERBAN IONEL",
+      "tableNumber": "8",
+      "arrived": false
+    },
+    {
+      "name": "IFRIM GIGI",
+      "tableNumber": "8",
+      "arrived": false
+    },
+    {
+      "name": "VRINCEANU CRISTIAN",
+      "tableNumber": "8",
+      "arrived": false
+    },
+    {
+      "name": "MIHALCEA SANDU CECILIA",
+      "tableNumber": "8",
+      "arrived": false
+    },
+    {
+      "name": "SERBAN CATALIN",
+      "tableNumber": "9",
+      "arrived": false
+    },
+    {
+      "name": "TUDURACHE PETRU",
+      "tableNumber": "9",
+      "arrived": false
+    },
+    {
+      "name": "ROTARU CRISTI",
+      "tableNumber": "9",
+      "arrived": false
+    },
+    {
+      "name": "GRIGORAS NICU",
+      "tableNumber": "9",
+      "arrived": false
+    },
+    {
+      "name": "MOISA GABRIELA",
+      "tableNumber": "9",
+      "arrived": false
+    },
+    {
+      "name": "MOLDOVANU D-TRU",
+      "tableNumber": "13",
+      "arrived": false
+    },
+    {
+      "name": "GHETIU ADI",
+      "tableNumber": "13",
+      "arrived": false
+    },
+    {
+      "name": "BITU VALENTIN",
+      "tableNumber": "13",
+      "arrived": false
+    },
+    {
+      "name": "COBZARU VIOREL",
+      "tableNumber": "13",
+      "arrived": false
+    },
+    {
+      "name": "ADUMITROAEI MARIA",
+      "tableNumber": "17",
+      "arrived": true
+    },
+    {
+      "name": "CIOBANICA CRISTINA",
+      "tableNumber": "17",
+      "arrived": false
+    },
+    {
+      "name": "GRIGORITA GABRIELA",
+      "tableNumber": "17",
+      "arrived": false
+    },
+    {
+      "name": "LUCA CRINA",
+      "tableNumber": "17",
+      "arrived": false
+    },
+    {
+      "name": "LAZAROI LAVINIA",
+      "tableNumber": "19",
+      "arrived": false
+    },
+    {
+      "name": "CIUCIUC ALEXANDRU",
+      "tableNumber": "19",
+      "arrived": false
+    },
+    {
+      "name": "GHERASIM LACRAMIOARA",
+      "tableNumber": "19",
+      "arrived": false
+    },
+    {
+      "name": "POPESCU CRISTINA",
+      "tableNumber": "19",
+      "arrived": false
+    },
+    {
+      "name": "SIMON TEODOR",
+      "tableNumber": "19",
+      "arrived": false
+    },
+    {
+      "name": "BAEANU ANDREI",
+      "tableNumber": "22",
+      "arrived": false
+    },
+    {
+      "name": "VITA ALEXANDRU",
+      "tableNumber": "22",
+      "arrived": false
+    },
+    {
+      "name": "MIHAILA TEODORA",
+      "tableNumber": "22",
+      "arrived": false
+    },
+    {
+      "name": "UNGUREANU CATALINA",
+      "tableNumber": "22",
+      "arrived": false
+    },
+    {
+      "name": "CRAMBA IOANA",
+      "tableNumber": "23",
+      "arrived": false
+    },
+    {
+      "name": "HOHAN BOGDAN",
+      "tableNumber": "23",
+      "arrived": false
+    },
+    {
+      "name": "STAMATIN RAMONA",
+      "tableNumber": "23",
+      "arrived": false
+    },
+    {
+      "name": "MISAILOAIE ELIZA",
+      "tableNumber": "23",
+      "arrived": false
+    },
+    {
+      "name": "TILICA ANGELA",
+      "tableNumber": "23",
+      "arrived": false
+    },
+    {
+      "name": "FLOREA RAUL",
+      "tableNumber": "3",
+      "arrived": false
+    },
+    {
+      "name": "OLARIU MARIAN",
+      "tableNumber": "3",
+      "arrived": false
+    },
+    {
+      "name": "FLOREA ANA",
+      "tableNumber": "3",
+      "arrived": false
+    },
+    {
+      "name": "OLARIU BOGADAN",
+      "tableNumber": "3",
+      "arrived": false
+    },
+    {
+      "name": "ICHIM ANCA",
+      "tableNumber": "3",
+      "arrived": false
+    },
+    {
+      "name": "OLARIU CRISTI",
+      "tableNumber": "4",
+      "arrived": false
+    },
+    {
+      "name": "OLARIU CIPRIAN",
+      "tableNumber": "4",
+      "arrived": false
+    },
+    {
+      "name": "GRIGORAS MARIA",
+      "tableNumber": "4",
+      "arrived": false
+    },
+    {
+      "name": "GRIGORAS LUTA",
+      "tableNumber": "4",
+      "arrived": false
+    },
+    {
+      "name": "GRIGORAS TITI",
+      "tableNumber": "4",
+      "arrived": false
+    },
+    {
+      "name": "GRIGORAS OANA",
+      "tableNumber": "4",
+      "arrived": false
+    },
+    {
+      "name": "SAVIN ALEXANDRINA",
+      "tableNumber": "5",
+      "arrived": false
+    },
+    {
+      "name": "CHIRIAC PETRISOR",
+      "tableNumber": "5",
+      "arrived": false
+    },
+    {
+      "name": "SMAU ANA",
+      "tableNumber": "5",
+      "arrived": false
+    },
+    {
+      "name": "SELIMAN ROXANA",
+      "tableNumber": "5",
+      "arrived": false
+    },
+    {
+      "name": "AJITARITEI MIHAELA",
+      "tableNumber": "5",
+      "arrived": false
+    },
+    {
+      "name": "PADURARU CARMEN",
+      "tableNumber": "10",
+      "arrived": false
+    },
+    {
+      "name": "PADURARU MIHAI",
+      "tableNumber": "10",
+      "arrived": false
+    },
+    {
+      "name": "PADURARU ALEX",
+      "tableNumber": "10",
+      "arrived": false
+    },
+    {
+      "name": "PIPIRIG BOGDAN",
+      "tableNumber": "10",
+      "arrived": false
+    },
+    {
+      "name": "AGAPE IULIA",
+      "tableNumber": "10",
+      "arrived": false
+    },
+    {
+      "name": "ZUPCU EMIL",
+      "tableNumber": "14",
+      "arrived": true
+    },
+    {
+      "name": "APOSTOL CATALINA",
+      "tableNumber": "14",
+      "arrived": false
+    },
+    {
+      "name": "RUSU VASILE",
+      "tableNumber": "14",
+      "arrived": false
+    },
+    {
+      "name": "HEREA PETRONELA",
+      "tableNumber": "14",
+      "arrived": false
+    },
+    {
+      "name": "POPA MIHAELA",
+      "tableNumber": "14",
+      "arrived": false
+    },
+    {
+      "name": "CHIRIAC DRAGOS",
+      "tableNumber": "14",
+      "arrived": false
+    },
+    {
+      "name": "DAVID ROXANA",
+      "tableNumber": "20",
+      "arrived": false
+    },
+    {
+      "name": "NECHIFOR MIHAELA",
+      "tableNumber": "20",
+      "arrived": false
+    },
+    {
+      "name": "TIMOFTE LOREDANA",
+      "tableNumber": "20",
+      "arrived": false
+    },
+    {
+      "name": "LUCA TATIANA",
+      "tableNumber": "20",
+      "arrived": false
+    },
+    {
+      "name": "CIAPA ADRIANA",
+      "tableNumber": "20",
+      "arrived": false
+    },
+    {
+      "name": "CODREANU VLAD",
+      "tableNumber": "21",
+      "arrived": false
+    },
+    {
+      "name": "CADIR MIHAI",
+      "tableNumber": "21",
+      "arrived": false
+    },
+    {
+      "name": "RIPA DANIEL",
+      "tableNumber": "21",
+      "arrived": false
+    },
+    {
+      "name": "ACSINTE CATALINA",
+      "tableNumber": "21",
+      "arrived": true
+    },
+    {
+      "name": "HUTU CEZAR",
+      "tableNumber": "21",
+      "arrived": false
+    },
+    {
+      "name": "MARIN ADI",
+      "tableNumber": "21",
+      "arrived": false
+    },
+    {
+      "name": "ZOTA CRISTI",
+      "tableNumber": "24",
+      "arrived": false
+    },
+    {
+      "name": "LUPU OANA",
+      "tableNumber": "24",
+      "arrived": false
+    },
+    {
+      "name": "BOSIANU BRINDUSA",
+      "tableNumber": "24",
+      "arrived": false
+    },
+    {
+      "name": "SFITA OANA",
+      "tableNumber": "24",
+      "arrived": false
+    },
+    {
+      "name": "SANDU ADRIANA",
+      "tableNumber": "24",
+      "arrived": false
+    },
+    {
+      "name": "BOTEZ LUMINITA",
+      "tableNumber": "24",
+      "arrived": false
+    },
+    {
+      "name": "MERCHEZ CRISTI",
+      "tableNumber": "25",
+      "arrived": false
+    },
+    {
+      "name": "IURASCU IONUT",
+      "tableNumber": "25",
+      "arrived": false
+    },
+    {
+      "name": "GHERASIM STEFANUT",
+      "tableNumber": "25",
+      "arrived": false
+    },
+    {
+      "name": "IOSIPESCU LIVIU",
+      "tableNumber": "25",
+      "arrived": false
+    },
+    {
+      "name": "LUPULEASA MADALINA",
+      "tableNumber": "25",
+      "arrived": false
+    },
+    {
+      "name": "ACOSTACHIOAIEI COSTEL",
+      "tableNumber": "26",
+      "arrived": true
+    },
+    {
+      "name": "ZLAVOG ROXANA",
+      "tableNumber": "26",
+      "arrived": false
+    },
+    {
+      "name": "DRAGAN ROMICA",
+      "tableNumber": "26",
+      "arrived": false
+    },
+    {
+      "name": "PADURARIU DOINITA",
+      "tableNumber": "26",
+      "arrived": false
+    },
+    {
+      "name": "GHICIUC PETRONELA",
+      "tableNumber": "26",
+      "arrived": false
+    },
+    {
+      "name": "PAIUS DIANA",
+      "tableNumber": "26",
+      "arrived": false
+    },
+    {
+      "name": "ZLAVOG STEFANA",
+      "tableNumber": "26",
+      "arrived": false
+    },
+    {
+      "name": "MANOLACHE CRISTI",
+      "tableNumber": "27",
+      "arrived": false
+    },
+    {
+      "name": "GHEORGHISOR DORIN",
+      "tableNumber": "27",
+      "arrived": false
+    },
+    {
+      "name": "LUPU CODRIN",
+      "tableNumber": "27",
+      "arrived": false
+    },
+    {
+      "name": "COSMIN YO",
+      "tableNumber": "27",
+      "arrived": false
+    },
+    {
+      "name": "RADU MIRON",
+      "tableNumber": "27",
+      "arrived": false
+    },
+    {
+      "name": "MINEATA VIOREL",
+      "tableNumber": "27",
+      "arrived": false
+    }
+  ]
+}

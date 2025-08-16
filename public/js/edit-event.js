@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
         renderGuestList(filteredGuests);
     }
     
-
     function sortGuests(property, order) {
         guests.sort((a, b) => {
             const varA = (typeof a[property] === 'string') ? a[property].toUpperCase() : a[property];
