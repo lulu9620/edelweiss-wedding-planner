@@ -143,7 +143,7 @@
     {
       "name": "DAVIDESCU DANA",
       "tableNumber": "12",
-      "arrived": true
+      "arrived": false
     },
     {
       "name": "COSTAN CRENGUTA",
@@ -283,7 +283,7 @@
     {
       "name": "ADUMITROAEI MARIA",
       "tableNumber": "17",
-      "arrived": true
+      "arrived": false
     },
     {
       "name": "CIOBANICA CRISTINA",
@@ -478,7 +478,7 @@
     {
       "name": "ZUPCU EMIL",
       "tableNumber": "14",
-      "arrived": true
+      "arrived": false
     },
     {
       "name": "APOSTOL CATALINA",
@@ -548,7 +548,7 @@
     {
       "name": "ACSINTE CATALINA",
       "tableNumber": "21",
-      "arrived": true
+      "arrived": false
     },
     {
       "name": "HUTU CEZAR",
@@ -618,7 +618,7 @@
     {
       "name": "ACOSTACHIOAIEI COSTEL",
       "tableNumber": "26",
-      "arrived": true
+      "arrived": false
     },
     {
       "name": "ZLAVOG ROXANA",
