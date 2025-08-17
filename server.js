@@ -55,11 +55,6 @@ const requireAuth = (req, res, next) => {
     }
 };
 
-// Serve client-side socket.io script
-app.get('/socket.io/socket.io.js', (req, res) => {
-    res.sendFile(path.join(__dirname, '/node_modules/socket.io/client-dist/socket.io.js'));
-});
-
 app.get('/check-auth', (req, res) => {
     console.log('Check auth request received');
     console.log('Session:', req.session);
