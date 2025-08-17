@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const socket = io({
-    transports: ["websocket"],
-  });
+  const socket = io();
 
   console.log("Socket.io initialized");
 
