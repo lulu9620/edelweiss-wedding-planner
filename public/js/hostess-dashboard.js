@@ -275,9 +275,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.toggleResetFilterName = toggleResetFilterName;
     window.clearInput = clearInput;
 
-  // REMOVE THIS NESTED EVENT LISTENER - It's causing the problem
-  // document.addEventListener("DOMContentLoaded", function () { ... });
-
   // Instead, put the modal code directly here:
   let currentGuestId = null;
 
