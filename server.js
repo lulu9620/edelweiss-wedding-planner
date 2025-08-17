@@ -9,9 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const socketIo = require('socket.io');
 const session = require('express-session'); 
-const io = socketIo(server, {
-    transports: ['websocket']
-});
+const io = socketIo(server);
 
 const PORT = process.env.PORT || 3000;
 const dataFolder = path.join(__dirname, 'data');

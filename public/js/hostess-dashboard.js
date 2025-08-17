@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const socket = io({
-    transports: ["websocket"],
-  });
+  const socket = io();
 
   console.log("Socket.io initialized");
 
@@ -274,9 +272,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.toggleResetFilterName = toggleResetFilterName;
     window.clearInput = clearInput;
-
-  // REMOVE THIS NESTED EVENT LISTENER - It's causing the problem
-  // document.addEventListener("DOMContentLoaded", function () { ... });
 
   // Instead, put the modal code directly here:
   let currentGuestId = null;
