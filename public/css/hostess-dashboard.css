@@ -204,6 +204,9 @@ table.dataTable tbody td:nth-child(1) {
 
 .event-info h3 {
     word-break: break-word;
+    font-family: "Parisienne", cursive;
+    font-weight: 500;
+    font-size: 3rem;
 }
 
 /* Dropdown positioning fixes - only needed if using dropdowns */
