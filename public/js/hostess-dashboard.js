@@ -343,3 +343,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+document.addEventListener("visibilitychange", () => {   if (document.hidden) {       } else {     window.location.reload();   } });
