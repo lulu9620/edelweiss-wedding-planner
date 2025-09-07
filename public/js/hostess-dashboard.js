@@ -48,6 +48,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Heartbeat logic for dead socket detection (1s interval, 5s timeout)
+  let lastServerHeartbeat = Date.now();
+  const HEARTBEAT_INTERVAL = 1000; // 1s
+  const HEARTBEAT_TIMEOUT = 5000; // 5s
+
+  socket.on('serverHeartbeat', () => {
+    lastServerHeartbeat = Date.now();
+  });
+
+  setInterval(() => {
+    if (socket.disconnected && !socket.active) return;
+    try {
+      socket.emit('clientHeartbeat');
+    } catch (e) {
+      console.log('Heartbeat emit failed', e);
+    }
+    const since = Date.now() - lastServerHeartbeat;
+    if (since > HEARTBEAT_TIMEOUT) {
+      console.warn('Heartbeat timeout; forcing reconnect');
+      showReconnectBanner('Reconectare (heartbeat)...');
+      try { socket.disconnect(); } catch (_) {}
+      socket.connect();
+    }
+  }, HEARTBEAT_INTERVAL);
+
   console.log("Socket.io initialized");
 
   // Base connect
