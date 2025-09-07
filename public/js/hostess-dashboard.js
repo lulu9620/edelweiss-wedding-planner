@@ -1,105 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Enhanced Socket.IO initialization with reconnection support
-  const socket = io({
-    transports: ["websocket", "polling"],
-    reconnection: true,
-    reconnectionAttempts: Infinity, // keep trying
-    reconnectionDelay: 1000,
-    reconnectionDelayMax: 8000,
-    timeout: 20000,
-    autoConnect: true
-  });
-
-  let hasJoined = false;
-  let reconnectBannerEl = null;
-
-  function showReconnectBanner(message = "Reconectare...") {
-    if (!reconnectBannerEl) {
-      reconnectBannerEl = document.createElement("div");
-      reconnectBannerEl.id = "reconnect-banner";
-      reconnectBannerEl.className = "reconnect-banner";
-      document.body.appendChild(reconnectBannerEl);
-    }
-    reconnectBannerEl.textContent = message;
-    reconnectBannerEl.style.display = "block";
-  }
-
-  function hideReconnectBanner() {
-    if (reconnectBannerEl) reconnectBannerEl.style.display = "none";
-  }
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const eventFilename = urlParams.get("event");
-
-  function joinRoom() {
-    if (!eventFilename) return;
-    socket.emit("joinEvent", eventFilename);
-    console.log("joinEvent emitted:", eventFilename);
-    hasJoined = true;
-  }
+  const socket = io();
 
   console.log("Socket.io initialized");
 
-  // Base connect
-  socket.on("connect", () => {
-    console.log("Socket connected", socket.id);
-    hideReconnectBanner();
-    if (!hasJoined) {
-      joinRoom();
-    } else {
-      // Re-emit after reconnect to ensure room subscription
-      joinRoom();
-    }
-  });
-
-  socket.on("disconnect", (reason) => {
-    console.log("Socket disconnected:", reason);
-    showReconnectBanner("Conexiune pierdută. Încercăm să reconectăm...");
-  });
-
-  socket.on("reconnect_attempt", (n) => {
-    showReconnectBanner(`Reconectare (${n})...`);
-  });
-
-  socket.on("reconnect", (n) => {
-    console.log("Reconnected after attempts:", n);
-    hideReconnectBanner();
-    joinRoom();
-  });
-
-  socket.on("reconnect_error", (err) => {
-    console.log("Reconnect error", err.message || err);
-    showReconnectBanner("Eroare la reconectare. Reîncercăm...");
-  });
-
-  socket.on("reconnect_failed", () => {
-    showReconnectBanner("Nu se poate reconecta. Verifică internetul.");
-  });
-
-  // Page/tab visibility handling (tablet sleep / resume)
-  document.addEventListener("visibilitychange", () => {
-    if (!document.hidden) {
-      // Tab became visible again; ensure connection
-      if (!socket.connected) {
-        showReconnectBanner("Reconectare după revenire...");
-        socket.connect();
-      } else {
-        joinRoom();
-      }
-    }
-  });
-
-  // Handle browser back/forward cache restoration (pageshow with persisted)
-  window.addEventListener("pageshow", (e) => {
-    if (e.persisted) {
-      if (!socket.connected) {
-        showReconnectBanner("Reconectare pagină restaurată...");
-        socket.connect();
-      } else {
-        joinRoom();
-      }
-    }
-  });
+  // Emit joinEvent with a dummy event filename for testing
+  const urlParams = new URLSearchParams(window.location.search);
+  const eventFilename = urlParams.get("event");
+  socket.emit("joinEvent", eventFilename);
+  console.log("joinEvent emitted:", eventFilename);
 
   // Update the arrived count function to use status elements instead of checkboxes
   function updateArrivedCount() {
