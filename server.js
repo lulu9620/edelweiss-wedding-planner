@@ -68,10 +68,6 @@ app.get('/check-auth', (req, res) => {
 // Handle real-time connections
 io.on('connection', (socket) => {
     console.log('A user connected');
-    // Heartbeat reply for client
-    socket.on('clientHeartbeat', () => {
-        socket.emit('serverHeartbeat');
-    });
     socket.on('joinEvent', (eventFilename) => {
         console.log('joinEvent received:', eventFilename); // Log joinEvent
 
