@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Add heartbeat status display at top of page
+  let heartbeatStatusEl = document.createElement("div");
+  heartbeatStatusEl.id = "heartbeat-status";
+  heartbeatStatusEl.style.cssText = "position:fixed;top:0;left:0;right:0;background:#e7d294;color:#222;padding:2px 10px;font-size:12px;z-index:99999;text-align:left;";
+  heartbeatStatusEl.textContent = "Last heartbeat: --";
+  document.body.prepend(heartbeatStatusEl);
   // Enhanced Socket.IO initialization with reconnection support
   const socket = io({
     transports: ["websocket", "polling"],
@@ -48,14 +54,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Heartbeat logic for dead socket detection (1s interval, 5s timeout)
+  // Heartbeat logic for dead socket detection (2s interval, 5s timeout)
   let lastServerHeartbeat = Date.now();
-  const HEARTBEAT_INTERVAL = 1000; // 1s
+  const HEARTBEAT_INTERVAL = 2000; // 1s
   const HEARTBEAT_TIMEOUT = 5000; // 5s
 
-  socket.on('serverHeartbeat', () => {
-    lastServerHeartbeat = Date.now();
-  });
+
+    socket.on('serverHeartbeat', () => {
+      lastServerHeartbeat = Date.now();
+      const dt = new Date(lastServerHeartbeat).toLocaleTimeString();
+      heartbeatStatusEl.textContent = `Last heartbeat: ${dt}`;
+    });
 
   setInterval(() => {
     if (socket.disconnected && !socket.active) return;
