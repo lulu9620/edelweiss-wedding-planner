@@ -38,6 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
     hasJoined = true;
   }
 
+  // Centralized reconnect / rejoin helper
+  function ensureConnected(message) {
+    if (!socket.connected) {
+      if (message) showReconnectBanner(message);
+      socket.connect();
+    } else {
+      joinRoom();
+    }
+  }
+
   console.log("Socket.io initialized");
 
   // Base connect
@@ -79,27 +89,42 @@ document.addEventListener("DOMContentLoaded", () => {
   // Page/tab visibility handling (tablet sleep / resume)
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden) {
-      // Tab became visible again; ensure connection
-      if (!socket.connected) {
-        showReconnectBanner("Reconectare după revenire...");
-        socket.connect();
-      } else {
-        joinRoom();
-      }
+      ensureConnected("Reconectare după revenire...");
     }
   });
 
   // Handle browser back/forward cache restoration (pageshow with persisted)
   window.addEventListener("pageshow", (e) => {
     if (e.persisted) {
-      if (!socket.connected) {
-        showReconnectBanner("Reconectare pagină restaurată...");
-        socket.connect();
-      } else {
-        joinRoom();
-      }
+      ensureConnected("Reconectare pagină restaurată...");
     }
   });
+
+  // iPad / Safari can miss visibilitychange after wake; add more triggers
+  window.addEventListener("focus", () => ensureConnected("Reconectare (focus)..."));
+  window.addEventListener("orientationchange", () => setTimeout(() => ensureConnected("Reconectare (rotire)..."), 300));
+  window.addEventListener("online", () => ensureConnected("Reconectare (online)..."));
+  // First user interaction after potential freeze
+  const resumeUserInteraction = () => {
+    ensureConnected("Reconectare...");
+  };
+  ["touchstart", "click"].forEach(ev => document.addEventListener(ev, resumeUserInteraction, { once: true }));
+
+  // Sleep gap detection: detect long pauses in JS timers (device sleep)
+  let lastTick = Date.now();
+  const SLEEP_CHECK_INTERVAL = 15000; // 15s
+  const SLEEP_GAP_THRESHOLD = 45000; // 45s gap suggests sleep
+  setInterval(() => {
+    const now = Date.now();
+    const gap = now - lastTick;
+    lastTick = now;
+    if (gap > SLEEP_GAP_THRESHOLD) {
+      // Device likely slept; refresh connection
+      ensureConnected("Reconectare după pauză...");
+      // Re-arm an interaction listener in case page was frozen
+      ["touchstart", "click"].forEach(ev => document.addEventListener(ev, resumeUserInteraction, { once: true }));
+    }
+  }, SLEEP_CHECK_INTERVAL);
 
   // Update the arrived count function to use status elements instead of checkboxes
   function updateArrivedCount() {
