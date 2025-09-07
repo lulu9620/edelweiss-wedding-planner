@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Heartbeat logic for dead socket detection (2s interval, 5s timeout)
   let lastServerHeartbeat = Date.now();
-  const HEARTBEAT_INTERVAL = 2000; // 1s
+  const HEARTBEAT_INTERVAL = 2000; // 2s
   const HEARTBEAT_TIMEOUT = 5000; // 5s
 
 
