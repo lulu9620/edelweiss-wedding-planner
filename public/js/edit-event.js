@@ -1,4 +1,3 @@
-// public/js/edit-event.js
 document.addEventListener('DOMContentLoaded', function() {
     const guestListTable = document.getElementById('guest-list').getElementsByTagName('tbody')[0];
     const addRowButton = document.getElementById('add-row');
@@ -8,58 +7,46 @@ document.addEventListener('DOMContentLoaded', function() {
     const tableHeaders = document.querySelectorAll('#guest-list thead th[data-sort]');
 
     let guests = [];
-    let originalGuests = []; // Store original guest data to preserve arrived status
+    let originalGuests = [];
+
+    function generateId() {
+        return '_' + Math.random().toString(36).slice(2, 11); // ID unic
+    }
 
     function updateGuestListData() {
         const rows = guestListTable.rows;
-        // Create a map of current visible guests with their updated data
-        const visibleGuestsMap = new Map();
-        const newGuests = [];
+        const updatedGuests = [];
         
         for (let i = 0; i < rows.length; i++) {
             const nameInput = rows[i].querySelector('input[name="guest-name"]');
             const tableInput = rows[i].querySelector('input[name="guest-table"]');
             
             if (nameInput && tableInput) {
-                const originalName = nameInput.getAttribute('data-original-name');
-                const currentName = nameInput.value;
-                const tableNumber = tableInput.value;
+                const id = nameInput.getAttribute('data-id');
+                const currentName = nameInput.value.trim();
+                const tableNumber = tableInput.value.trim();
                 
-                if (originalName === '' || originalName === null) {
-                    // This is a new guest
-                    if (currentName.trim() !== '' || tableNumber.trim() !== '') {
-                        newGuests.push({
+                if (currentName !== '' || tableNumber !== '') {
+                    let existingGuest = guests.find(g => g.id === id);
+                    if (existingGuest) {
+                        // actualizare guest existent
+                        existingGuest.name = currentName;
+                        existingGuest.tableNumber = tableNumber;
+                        updatedGuests.push(existingGuest);
+                    } else {
+                        // guest nou
+                        updatedGuests.push({
+                            id: id || generateId(),
                             name: currentName,
                             tableNumber: tableNumber,
                             arrived: false
                         });
                     }
-                } else {
-                    // This is an existing guest
-                    visibleGuestsMap.set(originalName, {
-                        name: currentName,
-                        tableNumber: tableNumber
-                    });
                 }
             }
         }
         
-        // Update guests array by merging with visible changes, preserving all guests
-        guests = guests.map(guest => {
-            // Check if this guest was modified in the visible list
-            const visibleGuest = visibleGuestsMap.get(guest.name);
-            if (visibleGuest) {
-                return {
-                    ...guest,
-                    name: visibleGuest.name,
-                    tableNumber: visibleGuest.tableNumber
-                };
-            }
-            return guest; // Keep original guest data if not visible/modified
-        });
-        
-        // Add any new guests
-        guests.push(...newGuests);
+        guests = updatedGuests;
     }
 
     function renderGuestList(filteredGuests = guests) {
@@ -75,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             nameInput.name = 'guest-name';
             nameInput.value = guest.name;
             nameInput.className = 'col-5';
-            nameInput.setAttribute('data-original-name', guest.name); // Track original name for mapping
+            nameInput.setAttribute('data-id', guest.id);
             
             nameCell.appendChild(nameInput);
             tableCell.innerHTML = `<input type="number" name="guest-table" value="${guest.tableNumber}" class="col-5">`;
@@ -87,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function filterGuests() {
         const nameFilter = filterNameInput.value.toLowerCase();
-        const tableFilter = filterTableInput.value;
+        const tableFilter = filterTableInput.value.toLowerCase();
         const filteredGuests = guests.filter(guest => {
             const matchesName = guest.name.toLowerCase().includes(nameFilter);
             const matchesTable = guest.tableNumber.toLowerCase().includes(tableFilter);
@@ -121,13 +108,13 @@ document.addEventListener('DOMContentLoaded', function() {
         nameInput.type = 'text';
         nameInput.name = 'guest-name';
         nameInput.className = 'col-5';
-        nameInput.setAttribute('data-original-name', ''); // Empty original name for new guests
+        const newId = generateId();
+        nameInput.setAttribute('data-id', newId);
         
         nameCell.appendChild(nameInput);
         tableCell.innerHTML = '<input type="number" name="guest-table" class="col-5">';
         actionsCell.innerHTML = '<button class="dropdown-item text-warning delete-row font-size-12" type="button"> <i class="bi bi-trash me-2"></i></button>';
 
-        // Insert at the beginning of the table body
         if (guestListTable.firstChild) {
             guestListTable.insertBefore(newRow, guestListTable.firstChild);
         } else {
@@ -164,17 +151,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function attachRowListeners(row) {
         row.querySelector('.delete-row').addEventListener('click', () => {
             const nameInput = row.querySelector('input[name="guest-name"]');
-            const originalName = nameInput.getAttribute('data-original-name');
-            
-            if (originalName && originalName !== '') {
-                // Remove from the complete guests array if it's an existing guest
-                guests = guests.filter(guest => guest.name !== originalName);
-            }
-            
-            // Remove the row from DOM
+            const id = nameInput.getAttribute('data-id');
+            guests = guests.filter(guest => guest.id !== id);
             row.remove();
             
-            // Re-apply current filters if needed
             if (filterNameInput.value || filterTableInput.value) {
                 filterGuests();
             }
@@ -185,7 +165,6 @@ document.addEventListener('DOMContentLoaded', function() {
         attachRowListeners(row);
     });
 
-    // Initialize original guest data from the existing table
     function initializeOriginalGuests() {
         originalGuests = [];
         guests = [];
@@ -196,17 +175,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const row = rows[i];
             
             if (nameInput && tableInput) {
-                // Check if the row has data-arrived attribute or use a default
                 const arrived = row.dataset.arrived === 'true' || false;
+                const id = generateId();
                 
                 const guestData = {
+                    id: id,
                     name: nameInput.value,
                     tableNumber: tableInput.value,
                     arrived: arrived
                 };
                 
-                // Set the data-original-name attribute for existing inputs
-                nameInput.setAttribute('data-original-name', nameInput.value);
+                nameInput.setAttribute('data-id', id);
                 
                 originalGuests.push(guestData);
                 guests.push(guestData);
@@ -214,6 +193,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initialize original guests and current guests
     initializeOriginalGuests();
 });
